@@ -104,7 +104,7 @@ const AboutUs: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
                 {/* overlay image5.1 centered on top of image5 (appears from nothing). visible only on xl+ */}
                 <div
                   aria-hidden="true"
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none bg-[url('/image5.1.png')] bg-no-repeat bg-center bg-contain z-30 pre-animate delay-3"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none bg-[url('/image5.1.png')] bg-no-repeat bg-center bg-contain z-30 pre-animate delay-5"
                   data-animate
                   style={{ width: 'min(42rem, 40vw)', height: 'min(42rem, 40vw)' }}
                 />

@@ -48,6 +48,14 @@ const Header: React.FC<{ language: "gr" | "en"; setLanguage: (lang: "gr" | "en")
     const onScroll = () => {
       const y = window.scrollY;
 
+      // always show header when at very top of the page
+      if (y === 0) {
+        setVisible(true);
+        setScrolled(false);
+        prevScroll.current = y;
+        return;
+      }
+
       // keep the scrolled state for background styling
       setScrolled(y > 10);
 

@@ -56,6 +56,10 @@ const Footer: FC = () => {
                       <a href="/pallets" className="hover:underline">
                         {item}
                       </a>
+                    ) : item === 'Our Vision' ? (
+                      <a href="/#our-vision" className="hover:underline">
+                        {item}
+                      </a>
                     ) : (
                       item
                     )}

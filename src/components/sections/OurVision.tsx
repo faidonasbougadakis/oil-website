@@ -51,6 +51,7 @@ const OurVision: React.FC<Props> = ({ language }) => {
 
   return (
     <section
+      id="our-vision"
       ref={sectionRef}
       // background image uses public folder; add a dark green fallback color
       style={{ backgroundImage: `url('/olivesBackround.jpg')`, backgroundColor: "#052617" }}

@@ -1,22 +1,128 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const copy = {
-  gr: { title: "Τα προϊόντα μας", body: "Σύντομη περιγραφή των προϊόντων μας." },
-  en: { title: "Our Products", body: "Short description of our products." },
+  gr: { title: "Τα προϊόντα μας" },
+  en: { title: "Our Products" },
 };
 
-const OurProducts: React.FC<{ language: "gr" | "en" }> = ({ language }) => (
-  <section id="our-products" className="py-20 px-6 text-black">
-    <div className="max-w-4xl mx-auto text-center">
-      <h2 className="text-2xl font-semibold mb-4">{copy[language].title}</h2>
-      <p className="max-w-2xl mx-auto">{copy[language].body}</p>
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-4 bg-white rounded border border-gray-200">Product A</div>
-        <div className="p-4 bg-white rounded border border-gray-200">Product B</div>
-        <div className="p-4 bg-white rounded border border-gray-200">Product C</div>
+const productText: { gr: string; en: string } = {
+  en: `Cretan Land extra virgin olive oil comes exclusively from olive fruits of the Koroneiki variety grown in our region. It is one of the most famous olive oils of the Cretan land due to its qualitative, organoleptic and chemical characteristics. It has received multiple honors and awards in Greece and around the world. You will find it in 250ml, 500ml and 750ml bottles, as well as in 3lt & 5lt cans.`,
+  gr: `Το εξαιρετικό παρθένο ελαιόλαδο Cretan Land προέρχεται αποκλειστικά από καρπούς της ποικιλίας Κορωνέικη που καλλιεργούνται στην περιοχή μας. Πρόκειται για ένα από τα πιο γνωστά ελαιόλαδα της κρητικής γης λόγω των ποιοτικών, οργανοληπτικών και χημικών χαρακτηριστικών του. Έχει λάβει πολλούς τιμητικούς διακρίσεις και βραβεία στην Ελλάδα και διεθνώς. Το βρίσκετε σε φιάλες 250ml, 500ml και 750ml, καθώς και σε δοχεία 3lt & 5lt.`,
+};
+
+const filenames = [
+  "Creta Land 1.png",
+  "Creta Land Small 1.png",
+  "Fiali 500ml 1.png",
+];
+
+const images = filenames.map((f) => `/items/${encodeURIComponent(f)}`);
+
+const OurProducts: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
+  const [index, setIndex] = useState(0);
+
+  // trigger appear animations when scrolled into view (repeatable)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const root = document.getElementById('our-products');
+    if (!root) return;
+    const toAnimate = Array.from(root.querySelectorAll('[data-animate]')) as HTMLElement[];
+    if (!toAnimate.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const el = entry.target as HTMLElement;
+        if (entry.isIntersecting) {
+          el.classList.remove('pre-animate');
+          el.classList.remove('animate-appear');
+          void el.offsetWidth;
+          el.classList.add('animate-appear');
+        } else {
+          el.classList.remove('animate-appear');
+          el.classList.add('pre-animate');
+        }
+      });
+    }, { threshold: 0.18 });
+
+    toAnimate.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!images.length) return;
+    const t = setInterval(() => setIndex((i) => (i + 1) % images.length), 4000);
+    return () => clearInterval(t);
+  }, []);
+
+  const prev = () => setIndex((i) => (i - 1 + images.length) % images.length);
+  const next = () => setIndex((i) => (i + 1) % images.length);
+
+  // silence unused warnings in TS by referencing them in a noop when not used
+  void prev;
+  void next;
+
+  return (
+    <>
+      <style>{`
+        @keyframes appearFromNothing {
+          0% { opacity: 0; transform: scale(0.92) }
+          60% { opacity: 1; transform: scale(1.02) }
+          100% { opacity: 1; transform: scale(1) }
+        }
+        .animate-appear { animation-name: appearFromNothing; animation-duration: 560ms; animation-timing-function: cubic-bezier(.2,.9,.2,1); animation-fill-mode: both; }
+        .pre-animate { opacity: 0; transform: scale(0.98); }
+        .delay-1 { animation-delay: 0.12s }
+        .delay-2 { animation-delay: 0.36s }
+        .delay-3 { animation-delay: 0.72s }
+        .delay-4 { animation-delay: 0.18s }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-appear { animation: none !important; }
+        }
+      `}</style>
+
+    <section id="our-products" className="relative text-black bg-gray-100 w-full min-h-screen lg:h-screen py-8 lg:py-0">
+      <div className="relative w-full z-10">
+
+        <div className="relative grid grid-cols-1 lg:grid-cols-[45vw_1fr] gap-6 lg:gap-8 items-start lg:items-center h-full">
+            {/* Left: carousel (mobile-first: appears first on small screens) */}
+            <div className="order-1 lg:order-1 w-full flex items-center justify-center py-4 lg:py-0">
+              <div className="relative bg-gray-100 backdrop-blur-sm rounded-lg overflow-hidden w-full flex items-center justify-center">
+                <img
+                  src={images[index]}
+                  alt={`Product ${index + 1}`}
+                  className="w-full h-auto max-h-[60vh] md:max-h-[75vh] lg:max-h-[85vh] object-contain"
+                />
+
+                {/* Dots */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+                  {images.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setIndex(i)}
+                      aria-label={`Go to slide ${i + 1}`}
+                      className={`w-3 h-3 rounded-full ${i === index ? 'bg-gray-800' : 'bg-white/70'}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right: description text (appears after carousel on mobile) */}
+            <div className="order-2 lg:order-2 backdrop-blur-sm px-4 sm:px-6 lg:px-12 py-4 lg:py-0 rounded-lg w-full flex flex-col justify-center">
+              <div className="inline-block mx-auto -mt-3 mb-4 pre-animate delay-4" data-animate>
+                <h2 className="font-bold mb-4 text-center tracking-wide" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.8rem)' }}>{copy[language].title}</h2>
+                <div className="w-20 h-1.5 mt-2 rounded-md pre-animate delay-1 mx-auto" data-animate style={{ backgroundColor: 'rgb(143, 144, 121)' }} />
+              </div>
+
+              <div className="pre-animate delay-2" data-animate>
+                <p className="leading-relaxed text-gray-900 font-semibold text-center tracking-wide" style={{ fontSize: 'clamp(0.95rem, 2.2vw, 1.2rem)' }}>{productText[language]}</p>
+              </div>
+            </div>
+          </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+    </>
+  );
+};
 
 export default OurProducts;
