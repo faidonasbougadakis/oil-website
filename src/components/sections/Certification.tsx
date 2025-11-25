@@ -46,6 +46,46 @@ const Certification: React.FC<{ language?: 'gr' | 'en' }> = ({ language = 'en' }
         <div className="mx-auto mb-8" style={{ width: 'calc(200px + 15%)' }}>
           <div style={{ height: 6, backgroundColor: 'rgb(143, 144, 121)', borderRadius: 4 }} />
         </div>
+
+        {/* Explanatory text under the title (Greek / English) */}
+        <div className="max-w-3xl mx-auto text-center text-gray-800 text-base md:text-lg leading-relaxed mb-8">
+          {language === 'gr' ? (
+            <>
+              <p>
+                Η ένδειξη καταγωγής αποτελεί εγγύηση για τον καταναλωτή, διασφαλίζοντας την τήρηση αυστηρών
+                προδιαγραφών παραγωγής.
+              </p>
+              <p className="mt-3 font-medium">
+                Π.Ο.Π. (Προστατευόμενη Ονομασία Προέλευσης) Πιστοποιεί ότι όλα τα στάδια παραγωγής – από
+                την καλλιέργεια έως και την ελαιοποίηση – πραγματοποιούνται αποκλειστικά εντός της
+                οριοθετημένης γεωγραφικής ζώνης (π.χ. Βιάννος). Αποτελεί την ανώτατη εγγύηση τοπικής
+                αυθεντικότητας.
+              </p>
+              <p className="mt-3 font-bold">
+                Π.Γ.Ε. (Προστατευόμενη Γεωγραφική Ένδειξη) Διασφαλίζει ότι το ελαιόλαδο συνδέεται άμεσα με
+                τη γεωγραφική περιοχή της Κρήτης, φέροντας τη φήμη και τα ποιοτικά χαρακτηριστικά του τόπου
+                παραγωγής του.
+              </p>
+            </>
+          ) : (
+            <>
+              <p>
+                The origin indication is a guarantee for the consumer, ensuring compliance with strict
+                production specifications.
+              </p>
+              <p className="mt-3 font-medium">
+                P.D.O. (Protected Designation of Origin) certifies that all production stages — from
+                cultivation to oil extraction — are carried out exclusively within the delimited
+                geographical area (e.g. Viannos). It represents the highest guarantee of local authenticity.
+              </p>
+              <p className="mt-3 font-bold">
+                P.G.I. (Protected Geographical Indication) ensures that the olive oil is directly linked to
+                the geographic area of Crete, carrying the reputation and the quality characteristics of its
+                place of production.
+              </p>
+            </>
+          )}
+        </div>
       </div>
 
       {/* Full-bleed carousel wrapper */}

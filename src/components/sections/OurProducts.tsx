@@ -5,9 +5,19 @@ const copy = {
   en: { title: "Our Products" },
 };
 
-const productText: { gr: string; en: string } = {
+const productText = {
   en: `Cretan Land extra virgin olive oil comes exclusively from olive fruits of the Koroneiki variety grown in our region. It is one of the most famous olive oils of the Cretan land due to its qualitative, organoleptic and chemical characteristics. It has received multiple honors and awards in Greece and around the world. You will find it in 250ml, 500ml and 750ml bottles, as well as in 3lt & 5lt cans.`,
-  gr: `Το εξαιρετικό παρθένο ελαιόλαδο Cretan Land προέρχεται αποκλειστικά από καρπούς της ποικιλίας Κορωνέικη που καλλιεργούνται στην περιοχή μας. Πρόκειται για ένα από τα πιο γνωστά ελαιόλαδα της κρητικής γης λόγω των ποιοτικών, οργανοληπτικών και χημικών χαρακτηριστικών του. Έχει λάβει πολλούς τιμητικούς διακρίσεις και βραβεία στην Ελλάδα και διεθνώς. Το βρίσκετε σε φιάλες 250ml, 500ml και 750ml, καθώς και σε δοχεία 3lt & 5lt.`,
+  gr: `Το έξτρα παρθένο ελαιόλαδο Cretan Land παράγεται αποκλειστικά από ελιές ποικιλίας Κορωνέικη που καλλιεργούνται στην περιοχή μας. Είναι ένα από τα πιο γνωστά ελαιόλαδα της Κρήτης χάρη στα ποιοτικά, οργανοληπτικά και χημικά του χαρακτηριστικά. Έχει λάβει πολλούς επαίνους και βραβεία στην Ελλάδα και διεθνώς. Το θα το βρείτε σε μπουκάλια 250ml, 500ml και 750ml, καθώς και σε δοχεία 3lt και 5lt.`
+};
+
+const regionText = {
+  gr: `Η ποιότητα του ελαιολάδου καθορίζεται άμεσα από το μικροκλίμα και τη μορφολογία του εδάφους. Η διαφοροποίηση μεταξύ ορεινών και πεδινών περιοχών δημιουργεί προϊόντα με διακριτό γευστικό χαρακτήρα.
+
+Ορεινές Περιοχές: Βιάννος, Κρουσώνας, Τύλισος. Το υψηλό υψόμετρο και η ιδιαίτερη εδαφογένεια προσδίδουν στο ελαιόλαδο συγκεκριμένα πλεονεκτήματα· οι συνθήκες καλλιέργειας σε αυτές τις ζώνες οδηγούν σε παραγωγή ελαιολάδου με εντονότερο πράσινο χρώμα, πλούσια φρουτώδη γεύση και υψηλή πολυπλοκότητα, καθώς και αυξημένη περιεκτικότητα σε ευεργετικές ουσίες λόγω της αργής ωρίμανσης του καρπού. Πεδινές & Ημιορεινές Περιοχές: Αρκαλοχώρι, Βόνη, Επισκοπή, Ασήμι. Στις περιοχές αυτές, η μορφολογία του εδάφους και η μεγαλύτερη ηλιοφάνεια διαμορφώνουν ένα διαφορετικό προφίλ· το ελαιόλαδο που παράγεται χαρακτηρίζεται από γευστική ισορροπία και ιδιαίτερα οργανοληπτικά χαρακτηριστικά που διαφοροποιούνται σαφώς από εκείνα των ορεινών όγκων.`,
+
+  en: `The quality of olive oil is directly determined by the microclimate and the morphology of the soil. The distinction between mountainous and lowland areas creates products with distinct flavor profiles.
+
+Mountainous Areas: Viannos, Krousonas, Tylisos. High altitude and unique soil composition give the olive oil specific advantages; cultivation conditions in these zones lead to the production of olive oil with a more intense green color, a rich fruity flavor and high complexity, and increased levels of beneficial compounds due to the slow ripening of the fruit. Lowland & Semi-mountainous Areas: Arkalochori, Voni, Episkopi, Asimi. In these areas, soil morphology and greater sunshine shape a different profile; the olive oil produced is characterized by balanced flavor and distinct organoleptic qualities that clearly differ from those of the mountainous regions.`
 };
 
 const filenames = [
@@ -80,17 +90,17 @@ const OurProducts: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
         }
       `}</style>
 
-    <section id="our-products" className="relative text-black bg-gray-100 w-full min-h-screen lg:h-screen py-8 lg:py-0">
-      <div className="relative w-full z-10">
+    <section id="our-products" className="relative text-black bg-gray-100 w-full h-screen pt-4 pb-8">
+      <div className="relative mx-auto z-10 h-full flex items-center">
 
-        <div className="relative grid grid-cols-1 lg:grid-cols-[45vw_1fr] gap-6 lg:gap-8 items-start lg:items-center h-full">
-            {/* Left: carousel (mobile-first: appears first on small screens) */}
-            <div className="order-1 lg:order-1 w-full flex items-center justify-center py-4 lg:py-0">
-              <div className="relative bg-gray-100 backdrop-blur-sm rounded-lg overflow-hidden w-full flex items-center justify-center">
+        <div className="relative w-full h-full flex flex-col lg:flex-row gap-8 items-center ">
+            {/* Left: carousel (full-height, left-to-middle) */}
+            <div className="order-1 lg:order-1 w-full lg:w-1/2 h-full flex items-center ">
+              <div className="relative bg-gray-100 backdrop-blur-sm rounded-lg overflow-hidden h-full w-full">
                 <img
                   src={images[index]}
                   alt={`Product ${index + 1}`}
-                  className="w-full h-auto max-h-[60vh] md:max-h-[75vh] lg:max-h-[85vh] object-contain"
+                  className="w-full h-full object-contain"
                 />
 
                 {/* Dots */}
@@ -107,15 +117,21 @@ const OurProducts: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
               </div>
             </div>
 
-            {/* Right: description text (appears after carousel on mobile) */}
-            <div className="order-2 lg:order-2 backdrop-blur-sm px-4 sm:px-6 lg:px-12 py-4 lg:py-0 rounded-lg w-full flex flex-col justify-center">
-              <div className="inline-block mx-auto -mt-3 mb-4 pre-animate delay-4" data-animate>
-                <h2 className="font-bold mb-4 text-center tracking-wide" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.8rem)' }}>{copy[language].title}</h2>
-                <div className="w-20 h-1.5 mt-2 rounded-md pre-animate delay-1 mx-auto" data-animate style={{ backgroundColor: 'rgb(143, 144, 121)' }} />
-              </div>
+            {/* Right: description text (bigger, vertically centered) */}
+            <div className="order-2 lg:order-2 w-full lg:w-1/2 rounded-lg flex items-center pr-4 lg:pr-12">
+              <div className="w-full">
+                <div className="inline-block mx-auto -mt-3 mb-4 pre-animate delay-4" data-animate>
+                  <h2 className="text-3xl font-semibold mb-4 text-center">{copy[language].title}</h2>
+                  <div className="w-20 h-1.5 mt-2 rounded-md pre-animate delay-1 mx-auto" data-animate style={{ backgroundColor: 'rgb(143, 144, 121)' }} />
+                </div>
 
-              <div className="pre-animate delay-2" data-animate>
-                <p className="leading-relaxed text-gray-900 font-semibold text-center tracking-wide" style={{ fontSize: 'clamp(0.95rem, 2.2vw, 1.2rem)' }}>{productText[language]}</p>
+                <div className="pre-animate delay-2" data-animate>
+                  <p className="text-lg leading-relaxed text-gray-900">{productText[language]}</p>
+                </div>
+
+                <div className="pre-animate delay-2 mt-6" data-animate>
+                  <div className="text-lg leading-relaxed text-gray-900 whitespace-pre-line">{regionText[language]}</div>
+                </div>
               </div>
             </div>
           </div>

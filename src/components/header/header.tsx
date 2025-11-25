@@ -8,7 +8,7 @@ const translations = {
   gr: {
     navLinks: [
       { id: "home", label: "Αρχική σελίδα" },
-      { id: "activities", label: "Δραστηριότητες" },
+      { id: "our-vision", label: "Το Όραμά μας" },
       { id: "our-facilities", label: "Εγκαταστάσεις" },
       { id: "about-us", label: "Σχετικά με εμάς" },
       { id: "contact-us", label: "Επικοινωνία" },
@@ -17,7 +17,7 @@ const translations = {
   en: {
     navLinks: [
       { id: "home", label: "Home" },
-      { id: "activities", label: "Activities" },
+      { id: "our-vision", label: "Our Vision" },
       { id: "our-facilities", label: "Our Facilities" },
       { id: "about-us", label: "About Us" },
       { id: "contact-us", label: "Contact Us" },
