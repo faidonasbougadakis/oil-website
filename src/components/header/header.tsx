@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import ReactCountryFlag from "react-country-flag";
 
@@ -110,10 +111,21 @@ const Header: React.FC<{ language: "gr" | "en"; setLanguage: (lang: "gr" | "en")
   
 
   const { navLinks } = translations[language];
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleNavClick = (e: any, id: string) => {
     e.preventDefault();
     setIsOpen(false);
+
+    // If we're not on the root path, navigate back to root with the hash
+    // so the homepage can handle scrolling to the section.
+    if (location.pathname !== '/') {
+      // Use react-router navigation to avoid full page reload
+      navigate(`/#${id}`);
+      return;
+    }
+
     const el = document.getElementById(id);
     if (el) {
       // account for fixed header height so section isn't hidden behind it
@@ -122,7 +134,7 @@ const Header: React.FC<{ language: "gr" | "en"; setLanguage: (lang: "gr" | "en")
       const top = el.getBoundingClientRect().top + window.scrollY - headerH - 8;
       window.scrollTo({ top, behavior: 'smooth' });
     } else {
-      // fallback: update hash
+      // fallback: update hash on the same path
       window.location.hash = `#${id}`;
     }
   };

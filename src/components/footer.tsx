@@ -49,11 +49,19 @@ const Footer: FC = () => {
         {columns.map((col) => (
           <div key={col.title}>
             <h4 className="text-lg font-semibold mb-3 border-b border-white pb-1">{col.title}</h4>
-            <ul className="space-y-2">
-              {col.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+              <ul className="space-y-2">
+                {col.items.map((item) => (
+                  <li key={item}>
+                    {item === 'Pallet Log' ? (
+                      <a href="/pallets" className="hover:underline">
+                        {item}
+                      </a>
+                    ) : (
+                      item
+                    )}
+                  </li>
+                ))}
+              </ul>
           </div>
         ))}
 

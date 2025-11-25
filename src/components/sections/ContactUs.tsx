@@ -138,7 +138,7 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
   // contact details (adjust as needed)
   const contact = {
     email: 'cretanlands@gmail.com',
-    phone: '+30 69X XXX XXXX',
+    phone: '+30 6986720400',
     address: 'Crete, Greece',
     hours: 'Mon–Fri, 09:00–17:00',
   }
@@ -151,7 +151,7 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
       style={{ backgroundColor: '#8F9079' }}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
           {/* Form column */}
           <div
             className="lg:col-span-2 rounded-2xl p-8 transform transition duration-300 hover:-translate-y-1 shadow-md"
@@ -285,14 +285,14 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
           </div>
 
           {/* Contact details column */}
-          <aside className="relative">
-            <div className="sticky top-20 bg-gradient-to-tr from-[#F6F5EE] to-[#F0F0E6] border border-gray-100 rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300">
+          <aside className="relative flex items-center">
+            <div className="bg-gradient-to-tr from-[#F6F5EE] to-[#F0F0E6] border border-gray-100 rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center justify-center w-full">
               <h3 className="text-lg font-semibold text-black">{t.contactDetails}</h3>
               <p className="mt-2 text-sm text-black">{t.useAny}</p>
 
               <dl className="mt-6 space-y-4 text-sm text-black">
-                <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-[#9B9C5D] flex-shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <div className="grid grid-cols-[auto_1fr] items-start gap-3">
+                  <svg className="w-5 h-5 text-[#9B9C5D] flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <path d="M2 6.5C2 5.119 3.119 4 4.5 4h15C20.881 4 22 5.119 22 6.5v11c0 1.381-1.119 2.5-2.5 2.5h-15C3.119 20 2 18.881 2 17.5v-11z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M22 6.5L12 13 2 6.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -321,8 +321,8 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-[#9B9C5D] flex-shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <div className="grid grid-cols-[auto_1fr] items-start gap-3">
+                  <svg className="w-5 h-5 text-[#9B9C5D] flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <path d="M22 16.92V20a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.1 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2 4.18 2 2 0 0 1 4 2h3.09a1 1 0 0 1 1 .75c.12.66.34 1.3.64 1.9a1 1 0 0 1-.24 1.04L7.91 7.91a15.07 15.07 0 0 0 6 6l1.22-1.22a1 1 0 0 1 1.04-.24c.59.3 1.23.52 1.9.64a1 1 0 0 1 .75 1V20z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   <div className="flex-1 min-w-0">
@@ -349,8 +349,8 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-[#9B9C5D] flex-shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <div className="grid grid-cols-[auto_1fr] items-start gap-3">
+                  <svg className="w-5 h-5 text-[#9B9C5D] flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 1 1 18 0z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                     <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -360,8 +360,8 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-[#9B9C5D] flex-shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <div className="grid grid-cols-[auto_1fr] items-start gap-3">
+                  <svg className="w-5 h-5 text-[#9B9C5D] flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   <div>
@@ -370,17 +370,7 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                   </div>
                 </div>
               </dl>
-
-              <div className="mt-6 flex gap-3">
-                <a href="#" className="inline-flex items-center gap-2 px-3 py-2 rounded-full border bg-white text-black hover:bg-[#9B9C5D]/8 transition-colors">
-                  <svg className="w-4 h-4 text-[#9B9C5D]" viewBox="0 0 24 24" fill="none"><path d="M12 2v20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
-                  {t.messageUs}
-                </a>
-                <a href="#" className="inline-flex items-center gap-2 px-3 py-2 rounded-full border bg-white text-black hover:bg-[#9B9C5D]/8 transition-colors">
-                  <svg className="w-4 h-4 text-[#9B9C5D]" viewBox="0 0 24 24" fill="none"><path d="M3 12h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
-                  {t.visitProfile}
-                </a>
-              </div>
+            
             </div>
           </aside>
         </div>
