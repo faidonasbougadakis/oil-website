@@ -90,17 +90,17 @@ const OurProducts: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
         }
       `}</style>
 
-    <section id="our-products" className="relative text-black bg-gray-100 w-full h-screen pt-4 pb-8">
+    <section id="our-products" className="relative text-black bg-gray-100 w-full min-h-screen pt-4 pb-8">
       <div className="relative mx-auto z-10 h-full flex items-center">
 
         <div className="relative w-full h-full flex flex-col lg:flex-row gap-8 items-center ">
             {/* Left: carousel (full-height, left-to-middle) */}
-            <div className="order-1 lg:order-1 w-full lg:w-1/2 h-full flex items-center ">
-              <div className="relative bg-gray-100 backdrop-blur-sm rounded-lg overflow-hidden h-full w-full">
+            <div className="order-1 lg:order-1 w-full lg:w-1/2 h-56 lg:h-full flex items-center transition-all duration-300">
+              <div className="relative bg-gray-100 backdrop-blur-sm rounded-lg overflow-hidden h-full w-full lg:h-auto lg:max-h-[70vh]">
                 <img
                   src={images[index]}
                   alt={`Product ${index + 1}`}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full lg:h-auto object-contain max-h-full"
                 />
 
                 {/* Dots */}
@@ -119,7 +119,7 @@ const OurProducts: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
 
             {/* Right: description text (bigger, vertically centered) */}
             <div className="order-2 lg:order-2 w-full lg:w-1/2 rounded-lg flex items-center pr-4 lg:pr-12">
-              <div className="w-full">
+              <div className="w-full px-4 sm:px-6">
                 <div className="inline-block mx-auto -mt-3 mb-4 pre-animate delay-4" data-animate>
                   <h2 className="text-3xl font-semibold mb-4 text-center">{copy[language].title}</h2>
                   <div className="w-20 h-1.5 mt-2 rounded-md pre-animate delay-1 mx-auto" data-animate style={{ backgroundColor: 'rgb(143, 144, 121)' }} />

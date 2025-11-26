@@ -51,6 +51,14 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
         }
       `}</style>
 
+      <style>{`
+        /* Force center layout for widths <= 1060px: hide desktop overlay and show mobile block */
+        @media (max-width: 1060px) {
+          .facilities-desktop { display: none !important; }
+          .facilities-mobile { display: flex !important; }
+        }
+      `}</style>
+
     <section
       id="our-facilities"
       aria-label="Our Facilities"
@@ -64,7 +72,7 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
       />
 
       {/* overlay text placed center-right (over image + green) on md+ */}
-      <div className="hidden md:block">
+      <div className="hidden md:block facilities-desktop">
         <div
           className="absolute top-1/2 transform -translate-y-1/2"
           style={{
@@ -118,7 +126,7 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
 
       {/* small screens: centered block over background */}
       <div
-        className="block md:hidden absolute inset-0 flex items-center justify-center px-6"
+        className="block md:hidden absolute inset-0 flex items-center justify-center px-6 facilities-mobile"
         style={{ zIndex: 10, fontFamily: containerFont }}
       >
         <div className="max-w-xl text-center">
