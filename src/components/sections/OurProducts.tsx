@@ -90,17 +90,17 @@ const OurProducts: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
         }
       `}</style>
 
-    <section id="our-products" className="relative text-black bg-gray-100 w-full min-h-screen pt-4 pb-8">
-      <div className="relative mx-auto z-10 h-full flex items-center">
+    <section id="our-products" className="relative text-black bg-gray-100 w-full min-h-screen flex items-center py-8">
+      <div className="relative mx-auto z-10 w-full flex items-center">
 
-        <div className="relative w-full h-full flex flex-col lg:flex-row gap-8 items-center ">
+        <div className="relative w-full flex flex-col lg:flex-row gap-8 items-center justify-center">
             {/* Left: carousel (full-height, left-to-middle) */}
-            <div className="order-1 lg:order-1 w-full lg:w-1/2 h-56 lg:h-full flex items-center transition-all duration-300">
-              <div className="relative bg-gray-100 backdrop-blur-sm rounded-lg overflow-hidden h-full w-full lg:h-auto lg:max-h-[70vh]">
+            <div className="order-1 lg:order-1 w-full lg:w-1/2 flex items-center transition-all duration-300">
+              <div className="relative bg-gray-100 backdrop-blur-sm rounded-lg overflow-hidden w-full h-56 sm:h-64 md:h-80 lg:h-[70vh]">
                 <img
                   src={images[index]}
                   alt={`Product ${index + 1}`}
-                  className="w-full h-full lg:h-auto object-contain max-h-full"
+                  className="w-full h-full object-contain"
                 />
 
                 {/* Dots */}
