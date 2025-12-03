@@ -45,10 +45,6 @@ const OurVision: React.FC<Props> = ({ language }) => {
     };
   }, []);
 
-  // use calligraphic fonts — load them via Google Fonts (see note)
-  const containerFont = "'Cormorant Garamond', 'Playfair Display', serif";
-  const headingFont = "'Playfair Display', 'Cormorant Garamond', serif";
-
   return (
     <section
       id="our-vision"
@@ -62,13 +58,13 @@ const OurVision: React.FC<Props> = ({ language }) => {
         /* overlay: use #364444 with lower opacity for a subtler tint */
         className="backdrop-blur-sm p-8 md:p-12 lg:p-16 rounded-lg max-w-[1200px] w-full text-center"
         // made overlay darker (more opaque)
-        style={{ fontFamily: containerFont, backgroundColor: "rgba(54,68,68,0.65)" }}
+        style={{ backgroundColor: "rgba(54,68,68,0.65)" }}
       >
         <h2
           className={`text-center text-3xl md:text-4xl lg:text-5xl font-semibold mb-8 transform transition-all duration-700 ease-out ${
             headingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
-          style={{ fontFamily: headingFont, fontStyle: "normal", letterSpacing: "0.6px" }}
+          style={{ fontStyle: "normal", letterSpacing: "0.6px" }}
         >
           {isGR ? "Το Όραμα" : "Our Vision"}
         </h2>

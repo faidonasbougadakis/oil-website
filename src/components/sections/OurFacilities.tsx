@@ -23,10 +23,6 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
   const fullText = isGR ? fullTextGr : fullTextEn;
   const { left, right } = splitText(fullText);
 
-  // Fonts: calligraphic heading + elegant serif body
-  const headingFont = "'Great Vibes', 'Playfair Display', serif";
-  const containerFont = "'Cormorant Garamond', 'Playfair Display', serif";
-
   return (
     <>
       <style>{`
@@ -62,7 +58,7 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
     <section
       id="our-facilities"
       aria-label="Our Facilities"
-      className="our-facilities-bg w-full min-h-[120vh] relative overflow-hidden py-16 md:py-20"
+      className="our-facilities-bg w-full min-h-[120vh] relative overflow-hidden py-12 md:py-16"
     >
       {/* dark overlay above the background image to increase text contrast */}
       <div
@@ -78,7 +74,6 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
           style={{
             right: "5%",
             width: "56%",
-            fontFamily: containerFont,
             zIndex: 10,
           }}
         >
@@ -86,7 +81,6 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
             <h2
               className="text-3xl md:text-4xl lg:text-5xl text-white mb-2 font-bold"
               style={{
-                fontFamily: headingFont,
                 letterSpacing: "0.6px",
                 lineHeight: 1.02,
                 textShadow: "0 6px 18px rgba(0,0,0,0.65)",
@@ -127,12 +121,12 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
       {/* small screens: centered block over background */}
       <div
         className="block md:hidden absolute inset-0 flex items-center justify-center px-6 facilities-mobile"
-        style={{ zIndex: 10, fontFamily: containerFont }}
+        style={{ zIndex: 10 }}
       >
         <div className="max-w-xl text-center">
           <h2
             className="text-2xl font-semibold text-white mb-2"
-            style={{ fontFamily: headingFont, textShadow: "0 6px 18px rgba(0,0,0,0.6)" }}
+            style={{ textShadow: "0 6px 18px rgba(0,0,0,0.6)" }}
           >
             {isGR ? "Οι εγκαταστάσεις μας" : "Our Facilities"}
           </h2>
