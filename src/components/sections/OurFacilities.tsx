@@ -62,7 +62,7 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
     <section
       id="our-facilities"
       aria-label="Our Facilities"
-      className="our-facilities-bg w-full min-h-screen relative overflow-hidden py-12 md:py-16"
+      className="our-facilities-bg w-full min-h-[120vh] relative overflow-hidden py-16 md:py-20"
     >
       {/* dark overlay above the background image to increase text contrast */}
       <div
