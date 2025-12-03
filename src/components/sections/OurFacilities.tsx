@@ -78,6 +78,8 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
           style={{
             right: "5%",
             width: "56%", // increased width so texts acquire more space
+            maxHeight: "90vh",
+            overflowY: "auto",
             fontFamily: containerFont,
             zIndex: 10,
           }}
@@ -126,7 +128,7 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
 
       {/* small screens: centered block over background */}
       <div
-        className="block md:hidden absolute inset-0 flex items-center justify-center px-6 facilities-mobile"
+        className="block md:hidden absolute inset-0 flex items-center justify-center px-6 py-12 facilities-mobile overflow-y-auto"
         style={{ zIndex: 10, fontFamily: containerFont }}
       >
         <div className="max-w-xl text-center">
