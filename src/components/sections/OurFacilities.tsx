@@ -163,7 +163,7 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
       id="our-facilities"
       aria-label="Our Facilities"
       ref={sectionRef}
-      className="our-facilities-bg w-full min-h-screen md:min-h-[70vh] relative overflow-hidden py-12 md:py-20"
+      className="our-facilities-bg w-full min-h-screen md:min-h-[70vh] relative overflow-hidden py-18 md:py-20"
       style={{ minHeight: computedMinHeight ? `${computedMinHeight}px` : undefined }}
     >
       {/* dark overlay above the background image to increase text contrast */}
