@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 type Props = { language?: "gr" | "en" };
 
@@ -13,6 +13,58 @@ const splitText = (text: string) => {
 
 const OurFacilities: React.FC<Props> = ({ language }) => {
   const isGR = language === "gr";
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const mobileRef = useRef<HTMLDivElement | null>(null);
+  const [computedMinHeight, setComputedMinHeight] = useState<number | null>(null);
+
+  const calculateMinHeight = () => {
+    if (typeof window === "undefined") return null;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    // Prefer measuring the desktop content block; fall back to mobile content if desktop hidden
+    const contentEl = contentRef.current ?? mobileRef.current ?? sectionRef.current;
+    const contentHeight = contentEl ? contentEl.getBoundingClientRect().height : 0;
+
+    // Desktop (md and up): ensure at least 70vh but big enough to vertically center content
+    let minHeight = Math.max(contentHeight + 160, Math.floor(vh * 0.7));
+
+    // Small landscape devices: ensure taller layout to avoid clipping
+    if (vw <= 1024 && window.matchMedia && window.matchMedia("(orientation: landscape)").matches) {
+      minHeight = Math.max(contentHeight + 120, Math.floor(vh * 1.2));
+    }
+
+    return Math.ceil(minHeight);
+  };
+
+  useEffect(() => {
+    const update = () => {
+      const h = calculateMinHeight();
+      setComputedMinHeight(h);
+    };
+
+    // Initial calculation after images/fonts/layout settle
+    const t = window.setTimeout(update, 80);
+    // Update on resize / orientationchange
+    window.addEventListener("resize", update);
+    window.addEventListener("orientationchange", update);
+
+    // Also update when page becomes visible (in case of background tab)
+    window.addEventListener("visibilitychange", () => {
+      if (!document.hidden) update();
+    });
+
+    // Cleanup
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener("resize", update);
+      window.removeEventListener("orientationchange", update);
+      window.removeEventListener("visibilitychange", () => {
+        /* noop */
+      });
+    };
+  }, []);
 
   const fullTextEn =
     "Each cooperative – member of the association has its own facilities and its own olive mills. The olive oil produced is stored in stainless oil tanks with a total capacity of approximately 700 tons until it is standardized. The modern olive oil press of the Cooperative is able to standardize in a wide range of packages. The Cooperative’s olive mill and printing house have been certified according to international standards FSSC 22000, ISO 22000, ISO 22005 and ISO 9001. The quality of the olive oil is directly determined by the microclimate and the morphology of the soil. The differentiation between mountainous and lowland areas produces products with a distinct flavor profile.\n\nMountainous Areas: Viannos, Krousonas, Tylisos. The high altitude and distinctive soil composition impart specific advantages to the olive oil. Growing conditions in these zones lead to production of olive oil with a more intense green color, a rich fruity flavor and high complexity, and an increased content of beneficial compounds due to the slow ripening of the fruit.\n\nLowland & Semi-mountainous Areas: Arkalochori, Voni, Episkopi, Asimi. In these areas, the soil morphology and greater sunshine create a different profile. The olive oil produced is characterized by a balanced taste and particular organoleptic characteristics that differ clearly from those of the mountainous regions.";
@@ -67,7 +119,9 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
     <section
       id="our-facilities"
       aria-label="Our Facilities"
+      ref={sectionRef}
       className="our-facilities-bg w-full min-h-screen md:min-h-[70vh] relative overflow-hidden py-12 md:py-20"
+      style={{ minHeight: computedMinHeight ? `${computedMinHeight}px` : undefined }}
     >
       {/* dark overlay above the background image to increase text contrast */}
       <div
