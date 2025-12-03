@@ -18,7 +18,7 @@ Lowland & Semi-mountainous Areas: Arkalochori, Voni, Episkopi, Asimi. In these a
           background-image: url('/oil-website/background-2.jpg');
           background-repeat: no-repeat;
           background-position: left center;
-          background-size: 70% auto;
+          background-size: 80% auto;
           background-color: rgb(87,101,96);
         }
         /* On medium and smaller screens prefer a cover background so the image scales and doesn't leave awkward gaps */
