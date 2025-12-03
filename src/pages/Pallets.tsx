@@ -28,7 +28,7 @@ const Pallets: React.FC<PalletsProps> = ({ language, setLanguage }) => {
         >
           <style>{`
             /* Default: keep image visible on the right where the pallet artwork sits */
-            .pallets-bg { background-image: url('/pallets.png'); background-repeat: no-repeat; background-position: right center; background-size: 80% auto; }
+            .pallets-bg { background-image: url('/oil-website/pallets.png'); background-repeat: no-repeat; background-position: right center; background-size: 80% auto; }
 
             /* Tablet: prefer showing full art, use contain and align top-center */
             @media (max-width: 1024px) {
@@ -40,7 +40,7 @@ const Pallets: React.FC<PalletsProps> = ({ language, setLanguage }) => {
               .pallets-bg { background-position: center top; background-size: contain; }
             }
               /* Stretch the background to fill the hero exactly: 100% width and 100% height */
-              .pallets-bg { background-image: url('/pallets.png'); background-repeat: no-repeat; background-position: center center; background-size: 100% 100%; }
+              .pallets-bg { background-image: url('/oil-website/pallets.png'); background-repeat: no-repeat; background-position: center center; background-size: 100% 100%; }
           `}</style>
 
           <div
