@@ -19,23 +19,53 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
   const [computedMinHeight, setComputedMinHeight] = useState<number | null>(null);
 
   const calculateMinHeight = () => {
-    if (typeof window === "undefined") return null;
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
+    try {
+      if (typeof window === "undefined") return null;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const orientationLandscape = window.matchMedia && window.matchMedia("(orientation: landscape)").matches;
 
-    // Prefer measuring the desktop content block; fall back to mobile content if desktop hidden
-    const contentEl = contentRef.current ?? mobileRef.current ?? sectionRef.current;
-    const contentHeight = contentEl ? contentEl.getBoundingClientRect().height : 0;
+      // Prefer measuring the desktop content block; fall back to mobile content if desktop hidden
+      const contentEl = contentRef.current ?? mobileRef.current ?? sectionRef.current;
+      const contentHeight = contentEl ? Math.ceil(contentEl.getBoundingClientRect().height) : 0;
 
-    // Desktop (md and up): ensure at least 70vh but big enough to vertically center content
-    let minHeight = Math.max(contentHeight + 160, Math.floor(vh * 0.7));
+      // Breakpoint logic (monitor / laptop / tablet / phone)
+      let baseVh = 0.7; // default laptop
+      let extra = 160;
 
-    // Small landscape devices: ensure taller layout to avoid clipping
-    if (vw <= 1024 && window.matchMedia && window.matchMedia("(orientation: landscape)").matches) {
-      minHeight = Math.max(contentHeight + 120, Math.floor(vh * 1.2));
+      if (vw >= 1600) {
+        // Monitor
+        baseVh = 0.6;
+        extra = 160;
+      } else if (vw >= 1060) {
+        // Laptop
+        baseVh = 0.7;
+        extra = 160;
+      } else if (vw >= 768) {
+        // Tablet
+        baseVh = 0.85;
+        extra = 140;
+      } else {
+        // Phone
+        if (orientationLandscape) {
+          baseVh = 1.2;
+          extra = 120;
+        } else {
+          baseVh = 1.0;
+          extra = 100;
+        }
+      }
+
+      // Compute minHeight: ensure it's large enough to fit content plus padding, or a vh-based minimum
+      const minFromContent = contentHeight > 0 ? contentHeight + extra : 0;
+      const minFromVh = Math.floor(vh * baseVh);
+      const minHeight = Math.max(minFromContent, minFromVh);
+
+      return Math.ceil(minHeight || minFromVh);
+    } catch (e) {
+      // Fallback: use 70vh
+      return Math.ceil((typeof window !== "undefined" ? window.innerHeight : 800) * 0.7);
     }
-
-    return Math.ceil(minHeight);
   };
 
   useEffect(() => {
@@ -45,24 +75,37 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
     };
 
     // Initial calculation after images/fonts/layout settle
-    const t = window.setTimeout(update, 80);
+    const t = window.setTimeout(update, 120);
+
     // Update on resize / orientationchange
     window.addEventListener("resize", update);
     window.addEventListener("orientationchange", update);
 
     // Also update when page becomes visible (in case of background tab)
-    window.addEventListener("visibilitychange", () => {
+    const onVisibility = () => {
       if (!document.hidden) update();
-    });
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
+    // Observe content size changes (fonts/images) to recompute
+    let ro: ResizeObserver | null = null;
+    try {
+      const target = contentRef.current ?? mobileRef.current ?? sectionRef.current;
+      if (typeof ResizeObserver !== "undefined" && target) {
+        ro = new ResizeObserver(() => update());
+        ro.observe(target);
+      }
+    } catch (e) {
+      ro = null;
+    }
 
     // Cleanup
     return () => {
       clearTimeout(t);
       window.removeEventListener("resize", update);
       window.removeEventListener("orientationchange", update);
-      window.removeEventListener("visibilitychange", () => {
-        /* noop */
-      });
+      document.removeEventListener("visibilitychange", onVisibility);
+      if (ro && ro.disconnect) ro.disconnect();
     };
   }, []);
 
@@ -140,7 +183,7 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
             zIndex: 10,
           }}
         >
-          <div className="pr-0 text-left">
+          <div className="pr-0 text-left" ref={contentRef}>
             <h2
               className="text-3xl md:text-4xl lg:text-5xl text-white mb-2 font-bold"
               style={{
@@ -182,7 +225,7 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
         className="block md:hidden absolute inset-0 flex items-center justify-center px-6 facilities-mobile"
         style={{ zIndex: 10 }}
       >
-        <div className="max-w-xl text-center">
+        <div className="max-w-xl text-center" ref={mobileRef}>
           <h2
             className="text-2xl font-semibold text-white mb-2"
             style={{ textShadow: "0 6px 18px rgba(0,0,0,0.6)" }}
