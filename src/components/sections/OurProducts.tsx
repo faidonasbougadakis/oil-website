@@ -13,11 +13,11 @@ const productText = {
 const regionText = {
   gr: `Η ποιότητα του ελαιολάδου καθορίζεται άμεσα από το μικροκλίμα και τη μορφολογία του εδάφους. Η διαφοροποίηση μεταξύ ορεινών και πεδινών περιοχών δημιουργεί προϊόντα με διακριτό γευστικό χαρακτήρα.
 
-Ορεινές Περιοχές: Βιάννος, Κρουσώνας, Τύλισος. Το υψηλό υψόμετρο και η ιδιαίτερη εδαφογένεια προσδίδουν στο ελαιόλαδο συγκεκριμένα πλεονεκτήματα· οι συνθήκες καλλιέργειας σε αυτές τις ζώνες οδηγούν σε παραγωγή ελαιολάδου με εντονότερο πράσινο χρώμα, πλούσια φρουτώδη γεύση και υψηλή πολυπλοκότητα, καθώς και αυξημένη περιεκτικότητα σε ευεργετικές ουσίες λόγω της αργής ωρίμανσης του καρπού. Πεδινές & Ημιορεινές Περιοχές: Αρκαλοχώρι, Βόνη, Επισκοπή, Ασήμι. Στις περιοχές αυτές, η μορφολογία του εδάφους και η μεγαλύτερη ηλιοφάνεια διαμορφώνουν ένα διαφορετικό προφίλ· το ελαιόλαδο που παράγεται χαρακτηρίζεται από γευστική ισορροπία και ιδιαίτερα οργανοληπτικά χαρακτηριστικά που διαφοροποιούνται σαφώς από εκείνα των ορεινών όγκων.`,
+Ορεινές Περιοχές: Βιάννος, Κρουσώνας, Τύλισος. Το υψηλό υψόμετρο και η ιδιαίτερη εδαφογένεια προσδίδουν στο ελαιόλαδο συγκεκριμένα πλεονεκτήματα· οι συνθήκες καλλιέργειας σε αυτές τις ζώνες οδηγούν σε παραγωγή ελαιολάδου με εντονότερο πράσινο χρώμα, πλούσια φρουτώδη γεύση και υψηλή πολυπλοκότητα, καθώς και αυξημένη περιεκτικότητα σε ευεργετικές ουσίες λόγω της αργής ωρίμανσης του καρπού. Πεδινές & Ημιορεινές Περιοχές: Αρκαλοχώρι, Βόνη, Επισκοπή, Τύλισος. Στις περιοχές αυτές, η μορφολογία του εδάφους και η μεγαλύτερη ηλιοφάνεια διαμορφώνουν ένα διαφορετικό προφίλ· το ελαιόλαδο που παράγεται χαρακτηρίζεται από γευστική ισορροπία και ιδιαίτερα οργανοληπτικά χαρακτηριστικά που διαφοροποιούνται σαφώς από εκείνα των ορεινών όγκων.`,
 
   en: `The quality of olive oil is directly determined by the microclimate and the morphology of the soil. The distinction between mountainous and lowland areas creates products with distinct flavor profiles.
 
-Mountainous Areas: Viannos, Krousonas, Tylisos. High altitude and unique soil composition give the olive oil specific advantages; cultivation conditions in these zones lead to the production of olive oil with a more intense green color, a rich fruity flavor and high complexity, and increased levels of beneficial compounds due to the slow ripening of the fruit. Lowland & Semi-mountainous Areas: Arkalochori, Voni, Episkopi, Asimi. In these areas, soil morphology and greater sunshine shape a different profile; the olive oil produced is characterized by balanced flavor and distinct organoleptic qualities that clearly differ from those of the mountainous regions.`
+Mountainous Areas: Viannos, Krousonas, Tylisos. High altitude and unique soil composition give the olive oil specific advantages; cultivation conditions in these zones lead to the production of olive oil with a more intense green color, a rich fruity flavor and high complexity, and increased levels of beneficial compounds due to the slow ripening of the fruit. Lowland & Semi-mountainous Areas: Arkalochori, Voni, Episkopi, tilisos. In these areas, soil morphology and greater sunshine shape a different profile; the olive oil produced is characterized by balanced flavor and distinct organoleptic qualities that clearly differ from those of the mountainous regions.`
 };
 
 const filenames = [
@@ -90,13 +90,13 @@ const OurProducts: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
         }
       `}</style>
 
-    <section id="our-products" className="relative text-black bg-gray-100 w-full min-h-screen flex items-center py-8">
+    <section id="our-products" className="relative text-black bg-gray-200 w-full min-h-screen flex items-center py-8">
       <div className="relative mx-auto z-10 w-full flex items-center">
 
         <div className="relative w-full flex flex-col lg:flex-row gap-8 items-center justify-center">
             {/* Left: carousel (full-height, left-to-middle) */}
             <div className="order-1 lg:order-1 w-full lg:w-1/2 flex items-center transition-all duration-300">
-              <div className="relative bg-gray-100 backdrop-blur-sm rounded-lg overflow-hidden w-full h-56 sm:h-64 md:h-80 lg:h-[70vh]">
+              <div className="relative bg-gray-200 backdrop-blur-sm rounded-lg overflow-hidden w-full h-56 sm:h-64 md:h-80 lg:h-[70vh]">
                 <img
                   src={images[index]}
                   alt={`Product ${index + 1}`}

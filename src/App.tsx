@@ -18,7 +18,7 @@ function App() {
     <>
       <Header language={language} setLanguage={setLanguage} />
 
-      <main className="flex flex-col items-center justify-center text-center text-black w-full">
+      <main className="flex flex-col items-center justify-center text-center text-black w-full pb-8">
         <Home language={language} />
         <AboutUs language={language} />
       <OurProducts language={language} />
@@ -35,7 +35,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="relative min-h-screen bg-gray-100">
+      <div className="relative min-h-screen bg-gray-200">
         {/* === Foreground Content === */}
         <div className="relative z-10">
           <Routes>

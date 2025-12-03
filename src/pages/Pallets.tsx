@@ -23,14 +23,30 @@ const Pallets: React.FC<PalletsProps> = ({ language, setLanguage }) => {
       {/* empty hero section with the same background/animation as Home */}
       <main className="flex-1">
         <section
-          id="pallets"
-          className="h-screen flex items-center justify-center text-center text-white relative overflow-hidden"
+            id="pallets"
+            className="w-full h-screen flex items-center justify-center text-center text-white relative overflow-hidden"
         >
+          <style>{`
+            /* Default: keep image visible on the right where the pallet artwork sits */
+            .pallets-bg { background-image: url('/pallets.png'); background-repeat: no-repeat; background-position: right center; background-size: 80% auto; }
+
+            /* Tablet: prefer showing full art, use contain and align top-center */
+            @media (max-width: 1024px) {
+              .pallets-bg { background-position: center top; background-size: contain; }
+            }
+
+            /* Mobile: ensure entire image is visible and not cropped */
+            @media (max-width: 480px) {
+              .pallets-bg { background-position: center top; background-size: contain; }
+            }
+              /* Stretch the background to fill the hero exactly: 100% width and 100% height */
+              .pallets-bg { background-image: url('/pallets.png'); background-repeat: no-repeat; background-position: center center; background-size: 100% 100%; }
+          `}</style>
+
           <div
-            className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ease-out transform ${
+            className={`absolute inset-0 pallets-bg transition-all duration-700 ease-out transform ${
               mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
             }`}
-            style={{ backgroundImage: "url('/pallets.png')" }}
             aria-hidden
           />
 

@@ -32,14 +32,25 @@ const AboutUs: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
         if (entry.isIntersecting) {
           // restart animation each time element enters
           el.classList.remove('pre-animate')
+          el.classList.remove('pre-animate-slide')
           el.classList.remove('animate-appear')
+          el.classList.remove('animate-slide-right')
           // force reflow so the animation can restart
           void el.offsetWidth
-          el.classList.add('animate-appear')
+          if (el.hasAttribute('data-animate-slide')) {
+            el.classList.add('animate-slide-right')
+          } else {
+            el.classList.add('animate-appear')
+          }
         } else {
           // reset to hidden state so it can animate again next time
           el.classList.remove('animate-appear')
-          el.classList.add('pre-animate')
+          el.classList.remove('animate-slide-right')
+          if (el.hasAttribute('data-animate-slide')) {
+            el.classList.add('pre-animate-slide')
+          } else {
+            el.classList.add('pre-animate')
+          }
         }
       })
     }, { threshold: 0.18 })
@@ -56,32 +67,50 @@ const AboutUs: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
           60% { opacity: 1; transform: scale(1.02) }
           100% { opacity: 1; transform: scale(1) }
         }
+        @keyframes slideFromRight {
+          0% { 
+            opacity: 0; 
+            transform: translate(calc(-50% + 100vw), -50%);
+          }
+          100% { 
+            opacity: 1; 
+            transform: translate(-50%, -50%);
+          }
+        }
         .animate-appear { animation-name: appearFromNothing; animation-duration: 560ms; animation-timing-function: cubic-bezier(.2,.9,.2,1); animation-fill-mode: both; }
+        .animate-slide-right { 
+          animation: slideFromRight 1200ms cubic-bezier(.2,.9,.2,1) both;
+        }
         .pre-animate { opacity: 0; transform: scale(0.98); }
+        .pre-animate-slide { 
+          opacity: 0; 
+          transform: translate(calc(-50% + 100vw), -50%);
+        }
         .delay-1 { animation-delay: 0.12s }
         .delay-2 { animation-delay: 0.36s }
         .delay-3 { animation-delay: 0.72s }
         .delay-4 { animation-delay: 0.18s }
+        .delay-5 { animation-delay: 0.6s }
         @media (prefers-reduced-motion: reduce) {
           .animate-appear { animation: none !important; }
+          .animate-slide-right { animation: none !important; opacity: 1 !important; }
         }
       `}</style>
-    <section id="about-us" className="py-0 px-0 text-black w-full min-h-screen xl:h-full relative overflow-x-hidden">
-      {/* blurred decorative background */}
-      <div aria-hidden className="absolute inset-0 bg-[url('/background-1.png')] bg-center bg-cover opacity-70 blur-xs pointer-events-none -z-10" />
+    <section id="about-us" className="py-0 px-0 text-black w-full min-h-screen xl:h-full relative overflow-x-hidden ">
+
       {/* Title moved into the left column above the paragraphs */}
 
       {/* Full-width container for the three-item box */}
-      <div className="w-full ">
-        <div className="relative ">
-          <div className="relative z-10 w-full max-w-none mx-auto grid grid-cols-1 xl:grid-cols-[1.8fr_0.9fr] gap-12 xl:gap-40 min-h-screen xl:min-h-0 place-items-center xl:place-items-stretch overflow-visible">
+      <div className="w-full h-full">
+        <div className="relative w-full h-full">
+          <div className="relative z-10 w-full h-full max-w-none mx-auto grid grid-cols-1 xl:grid-cols-[1.8fr_0.9fr] gap-12 xl:gap-40 min-h-screen place-items-center xl:place-items-center overflow-visible">
 
             {/* Leftmost: Main Text (wider) */}
-            <div className="about-left px-6 sm:px-8 md:px-12 xl:px-16 py-8 flex items-center justify-center text-center xl:text-left">
-              <div className="w-full max-w-[760px] mx-auto flex flex-col items-center lg:items-start justify-center">
+            <div className="about-left px-6 sm:px-8 md:px-12 xl:px-16 py-8 xl:py-0 flex items-center justify-center text-center ">
+              <div className="w-full max-w-[760px] mx-auto flex flex-col items-center justify-center">
               
                 <div className="inline-block mx-auto xl:mx-0 -mt-3 mb-4 pre-animate delay-4" data-animate>
-                  <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-black leading-tight text-center xl:text-left">{copy[language].title}</h2>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-black leading-tight text-center xl:text-center">{copy[language].title}</h2>
                   <div className="w-full h-1.5 mt-2 rounded-md pre-animate delay-1" data-animate style={{ backgroundColor: 'rgb(143, 144, 121)' }} />
                 </div>
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed mb-4 font-semibold pre-animate delay-2" data-animate>{fullText}</p>
@@ -94,21 +123,19 @@ const AboutUs: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
 
             {/* Rightmost: Decorative image5 with centered overlay */}
             {/* Rightmost: Decorative image5 with centered overlay — hidden on small (phones) */}
-            <div className="about-right hidden xl:flex items-start justify-center relative z-20">
-              <div className="w-full relative overflow-hidden">
-                <div
-                  aria-hidden="true"
-                  className="w-full rounded-none bg-[url('/image5.png')] bg-no-repeat bg-center bg-cover pointer-events-none h-[100vh]"
-                />
-
+            <div className="about-right hidden xl:flex items-center justify-center relative z-20 w-full h-full">
+             
+          
                 {/* overlay image5.1 centered on top of image5 (appears from nothing). visible only on xl+ */}
-                <div
+                <img
+                  src="/image5.1.png"
+                  alt=""
                   aria-hidden="true"
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none bg-[url('/image5.1.png')] bg-no-repeat bg-center bg-contain z-30 pre-animate delay-5"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-30 object-contain pre-animate delay-5"
                   data-animate
                   style={{ width: 'min(42rem, 40vw)', height: 'min(42rem, 40vw)' }}
                 />
-              </div>
+              
             </div>
 
           </div>

@@ -262,7 +262,7 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                 </p>
               )}
 
-              <div className="flex items-center gap-4 mt-4">
+              <div className="flex flex-col items-center gap-4 mt-4 max-[500px]:flex-col max-[500px]:items-center sm:flex-row sm:items-center sm:justify-start">
                 <button
                   type="submit"
                   disabled={submitting}
@@ -272,7 +272,7 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                   {submitting ? t.submitting : t.submit}
                 </button>
 
-                <div className="flex-1 min-w-0">
+                <div className="flex-1 min-w-0 text-center max-[500px]:text-center sm:text-left flex items-center justify-center sm:justify-start">
                   <p className="text-sm text-black break-words">
                     {t.sending}{' '}
                     <a href={`mailto:${contact.email}`} className="font-semibold text-black break-words">
