@@ -34,9 +34,9 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
       let extra = 160;
 
       if (vw >= 1600) {
-        // Monitor
-        baseVh = 0.6;
-        extra = 160;
+        // Large monitor — increase visual presence
+        baseVh = 0.8; // make monitors use ~80vh
+        extra = 220; // add more padding so text isn't cramped
       } else if (vw >= 1060) {
         // Laptop
         baseVh = 0.7;
