@@ -55,10 +55,19 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
         }
       `}</style>
 
+      <style>{`
+        /* Apply tall height only for small landscape screens (mobile phones) */
+        @media (max-width: 1024px) and (orientation: landscape) {
+          .our-facilities-bg {
+            min-height: 120vh !important;
+          }
+        }
+      `}</style>
+
     <section
       id="our-facilities"
       aria-label="Our Facilities"
-      className="our-facilities-bg w-full min-h-screen md:min-h-[70vh] landscape:min-h-[120vh] relative overflow-hidden py-12 md:py-16"
+      className="our-facilities-bg w-full min-h-screen md:min-h-[70vh] relative overflow-hidden py-12 md:py-16"
     >
       {/* dark overlay above the background image to increase text contrast */}
       <div
