@@ -34,7 +34,7 @@ function App() {
   );
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/oil-website">
       <div className="relative min-h-screen bg-gray-200">
         {/* === Foreground Content === */}
         <div className="relative z-10">
