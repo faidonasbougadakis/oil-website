@@ -62,7 +62,7 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
     <section
       id="our-facilities"
       aria-label="Our Facilities"
-      className="our-facilities-bg w-full min-h-[70vh] md:min-h-[75vh] relative overflow-hidden py-12 md:py-0"
+      className="our-facilities-bg w-full min-h-screen relative overflow-hidden py-12 md:py-16"
     >
       {/* dark overlay above the background image to increase text contrast */}
       <div
@@ -77,9 +77,7 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
           className="absolute top-1/2 transform -translate-y-1/2"
           style={{
             right: "5%",
-            width: "56%", // increased width so texts acquire more space
-            maxHeight: "90vh",
-            overflowY: "auto",
+            width: "56%",
             fontFamily: containerFont,
             zIndex: 10,
           }}
@@ -128,7 +126,7 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
 
       {/* small screens: centered block over background */}
       <div
-        className="block md:hidden absolute inset-0 flex items-center justify-center px-6 py-12 facilities-mobile overflow-y-auto"
+        className="block md:hidden absolute inset-0 flex items-center justify-center px-6 facilities-mobile"
         style={{ zIndex: 10, fontFamily: containerFont }}
       >
         <div className="max-w-xl text-center">
