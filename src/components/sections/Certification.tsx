@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 const Certification: React.FC<{ language?: 'gr' | 'en' }> = ({ language = 'en' }) => {
-  const images = ['/certifications/cert1.png', '/certifications/cert2.png', '/certifications/cert3.png']
+  const images = ['/oil-website/certifications/cert1.png', '/oil-website/certifications/cert2.png', '/oil-website/certifications/cert3.png']
   const [current, setCurrent] = useState(0)
   const [locked, setLocked] = useState(false)
   const [overlayOpen, setOverlayOpen] = useState(false)

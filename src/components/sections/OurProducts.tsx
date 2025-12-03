@@ -26,7 +26,7 @@ const filenames = [
   "Fiali 500ml 1.png",
 ];
 
-const images = filenames.map((f) => `/items/${encodeURIComponent(f)}`);
+const images = filenames.map((f) => `/oil-website/items/${encodeURIComponent(f)}`);
 
 const OurProducts: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
   const [index, setIndex] = useState(0);
