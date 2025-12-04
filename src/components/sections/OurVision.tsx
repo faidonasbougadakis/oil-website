@@ -61,13 +61,14 @@ const OurVision: React.FC<Props> = ({ language }) => {
         style={{ backgroundColor: "rgba(54,68,68,0.65)" }}
       >
         <h2
-          className={`text-center text-3xl md:text-4xl lg:text-5xl font-semibold mb-8 transform transition-all duration-700 ease-out ${
+          className={`text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold leading-tight text-center transform transition-all duration-700 ease-out ${
             headingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{ fontStyle: "normal", letterSpacing: "0.6px" }}
         >
           {isGR ? "Το Όραμα" : "Our Vision"}
         </h2>
+        <div className="w-full h-1.5 mt-2 rounded-md pre-animate delay-1 mx-auto" data-animate style={{ backgroundColor: 'rgb(143, 144, 121)' }} />
 
         <div
           className={`space-y-6 transform transition-all duration-900 ease-out ${
