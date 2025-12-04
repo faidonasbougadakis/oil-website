@@ -24,6 +24,36 @@ const columns = [
 ];
 
 const Footer: FC = () => {
+  const downloadImageOnMobile = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Only intercept on small screens (mobile). Let desktop follow the link.
+    if (typeof window === 'undefined') return;
+    const vw = window.innerWidth;
+    const MOBILE_MAX = 768; // treat <= 768px as mobile/tablet
+    if (vw > MOBILE_MAX) return; // allow normal navigation on larger screens
+
+    e.preventDefault();
+    const url = '/oil-website/pallets.png';
+    const filename = 'pallets.png';
+
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Failed to fetch');
+      const blob = await res.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = filename;
+      // Ensure it's added to DOM for Firefox
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
+    } catch (err) {
+      // Fallback: navigate to the pallets page if download fails
+      window.location.href = '/pallets';
+    }
+  };
+
   return (
     <footer className="bg-[#39413C] text-white py-12 px-6 text-center relative">
       <div
@@ -53,7 +83,7 @@ const Footer: FC = () => {
                 {col.items.map((item) => (
                   <li key={item}>
                     {item === 'Pallet Log' ? (
-                      <a href="/pallets" className="hover:underline">
+                      <a href="/pallets" onClick={downloadImageOnMobile} className="hover:underline">
                         {item}
                       </a>
                     ) : item === 'Our Vision' ? (
