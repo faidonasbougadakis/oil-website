@@ -76,7 +76,7 @@ const OurVision: React.FC<Props> = ({ language }) => {
         >
           {isGR ? (
             <div className="text-center">
-              <p className="text-lg md:text-xl lg:text-2xl mb-6 leading-relaxed italic">
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed font-semibold pre-animate delay-3 italic mb-6" data-animate>
                 Ο οργανισμός οραματίζεται ένα ακμάζον μέλλον για το κρητικό ελαιόλαδο
                 επιδιώκοντας:
               </p>
@@ -87,7 +87,7 @@ const OurVision: React.FC<Props> = ({ language }) => {
                 <li className="italic">Να βελτιώσει την ποιότητα του ελαιόλαδου και την ασφάλεια των καταναλωτών μέσω σύγχρονων συστημάτων ιχνηλασιμότητας και ποιοτικού ελέγχου</li>
               </ul>
 
-              <p className="text-lg md:text-xl lg:text-2xl leading-relaxed mt-6">
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed font-semibold pre-animate delay-3 mt-6" data-animate>
                 Στον πυρήνα του, το όραμα ενσωματώνει την πρακτική γνώση και την αρμονία
                 με τη φύση για την παραγωγή θρεπτικών, υψηλής ποιότητας αγροτικών προϊόντων
                 που συμβάλλουν στην εθνική ευημερία.
@@ -95,7 +95,7 @@ const OurVision: React.FC<Props> = ({ language }) => {
             </div>
           ) : (
             <div className="text-center">
-              <p className="text-lg md:text-xl lg:text-2xl mb-6 leading-relaxed italic">
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed font-semibold pre-animate delay-3 italic mb-6" data-animate>
                 The organization envisions a thriving future for Cretan olive oil by:
               </p>
 
@@ -105,7 +105,7 @@ const OurVision: React.FC<Props> = ({ language }) => {
                 <li className="italic">Enhancing olive oil quality and consumer safety through modern traceability and quality systems</li>
               </ul>
 
-              <p className="text-lg md:text-xl lg:text-2xl leading-relaxed mt-6">
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed font-semibold pre-animate delay-3 mt-6" data-animate>
                 At its core, the vision embraces practical knowledge and harmony with
                 nature to produce nutritious, high-quality agricultural products that
                 contribute to national prosperity.

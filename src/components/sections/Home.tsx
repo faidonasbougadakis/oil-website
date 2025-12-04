@@ -71,7 +71,9 @@ const Home: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
 
         <div className="relative z-10 flex flex-col items-center justify-center">
           <h1 className="text-4xl font-bold mb-4">{translations[language].welcome}</h1>
-          <p className="text-lg max-w-xl">{translations[language].scrollText}</p>
+          <p className="text-base sm:text-lg md:text-xl leading-relaxed font-semibold pre-animate delay-3 max-w-xl" data-animate>
+            {translations[language].scrollText}
+          </p>
         </div>
       </section>
 

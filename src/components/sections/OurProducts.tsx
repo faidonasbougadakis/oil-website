@@ -126,11 +126,15 @@ const OurProducts: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
                 </div>
 
                 <div className="pre-animate delay-2" data-animate>
-                  <p className="text-lg leading-relaxed text-gray-900">{productText[language]}</p>
+                  <p className="text-base sm:text-lg md:text-xl leading-relaxed font-semibold pre-animate delay-3 text-gray-900" data-animate>
+                    {productText[language]}
+                  </p>
                 </div>
 
                 <div className="pre-animate delay-2 mt-6" data-animate>
-                  <div className="text-lg leading-relaxed text-gray-900 whitespace-pre-line">{regionText[language]}</div>
+                  <div className="text-base sm:text-lg md:text-xl leading-relaxed font-semibold pre-animate delay-3 text-gray-900 whitespace-pre-line" data-animate>
+                    {regionText[language]}
+                  </div>
                 </div>
               </div>
             </div>
