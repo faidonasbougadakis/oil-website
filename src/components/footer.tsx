@@ -1,3 +1,4 @@
+import React from "react";
 import type { FC } from "react";
 import { FaFacebook, FaTwitter, FaPinterest, FaLinkedin } from "react-icons/fa";
 
@@ -83,10 +84,10 @@ const Footer: FC = () => {
                 {col.items.map((item) => (
                   <li key={item}>
                     {item === 'Pallet Log' ? (
-                      <a href="/pallets" onClick={downloadImageOnMobile} className="hover:underline">
-                        {item}
-                      </a>
-                    ) : item === 'Our Vision' ? (
+                          <a href="/pallets" onClick={downloadImageOnMobile} className="hover:underline">
+                            {item}
+                          </a>
+                        ) : item === 'Our Vision' ? (
                       <a href="/#our-vision" className="hover:underline">
                         {item}
                       </a>
