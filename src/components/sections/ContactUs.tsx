@@ -159,7 +159,7 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
               background: 'linear-gradient(135deg, #F6F5EE 0%, #F0F0E6 100%)',
             }}
           >
-            <h2 id="contact-heading" className="text-3xl font-semibold text-black">
+            <h2 id="contact-heading" className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold leading-tight text-center text-black mb-4">
               {t.title}
             </h2>
             <p className="mt-2 text-sm text-black/90">

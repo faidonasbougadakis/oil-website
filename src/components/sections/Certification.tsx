@@ -40,7 +40,7 @@ const Certification: React.FC<{ language?: 'gr' | 'en' }> = ({ language = 'en' }
     <section id="certifications" className="py-16 w-full">
       {/* Constrained header + underline */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <h2 className="text-3xl font-semibold text-center mb-4 text-black">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold leading-tight text-center text-black mb-4">
           {language === 'gr' ? 'Πιστοποιήσεις' : 'Certifications'}
         </h2>
         <div className="mx-auto mb-8" style={{ width: 'calc(200px + 15%)' }}>

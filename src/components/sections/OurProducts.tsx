@@ -121,7 +121,7 @@ const OurProducts: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
             <div className="order-2 lg:order-2 w-full lg:w-1/2 rounded-lg flex items-center pr-4 lg:pr-12">
               <div className="w-full px-4 sm:px-6">
                 <div className="inline-block mx-auto -mt-3 mb-4 pre-animate delay-4" data-animate>
-                  <h2 className="text-3xl font-semibold mb-4 text-center">{copy[language].title}</h2>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold leading-tight text-center text-black mb-4">{copy[language].title}</h2>
                   <div className="w-20 h-1.5 mt-2 rounded-md pre-animate delay-1 mx-auto" data-animate style={{ backgroundColor: 'rgb(143, 144, 121)' }} />
                 </div>
 

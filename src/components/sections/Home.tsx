@@ -2,17 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 
 const translations = {
   gr: {
-    welcome: "Καλώς ήρθατε στην εφαρμογή",
-    scrollText: "Κάντε κύλιση για να δείτε το header σε δράση",
-    secondTitle: "Δεύτερη ενότητα",
-    secondText:
-      "Αυτό το τμήμα υπάρχει για να δοκιμάσετε την κύλιση και τη μετάβαση του header.",
+    welcome: "Κρήτικος Αγρός",
+    scrollText: "Γεύση. Υγεία. Κρήτη. Ανακαλύψτε τη διαφορά που κάνει η καταγωγή.",
   },
   en: {
-    welcome: "Welcome to the App",
-    scrollText: "Scroll down to see the header in action",
-    secondTitle: "Second section",
-    secondText: "This section lets you scroll and test the header transition.",
+    welcome: "Cretan lands",
+    scrollText: "Taste. Health. Crete. Discover the difference that origin makes.",
   },
 };
 
@@ -70,10 +65,8 @@ const Home: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
         <div className={`absolute inset-0 bg-black/30 transition-opacity duration-700 ${mounted ? "opacity-100" : "opacity-0"}`} aria-hidden />
 
         <div className="relative z-10 flex flex-col items-center justify-center">
-          <h1 className="text-4xl font-bold mb-4">{translations[language].welcome}</h1>
-          <p className="text-base sm:text-lg md:text-xl leading-relaxed font-semibold pre-animate delay-3 max-w-xl" data-animate>
-            {translations[language].scrollText}
-          </p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold leading-tight text-center text-white mb-4">{translations[language].welcome}</h1>
+          <p className="text-2xl max-w-xl">{translations[language].scrollText}</p>
         </div>
       </section>
 

@@ -199,7 +199,7 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
             <div className="w-14 h-0.5 bg-white rounded mt-2 mb-6" />
 
             <p
-              className="text-white text-lg leading-normal"
+              className="text-white text-2xl leading-normal"
               style={{
                 marginBottom: "1.25rem",
                 textShadow: "0 4px 14px rgba(0,0,0,0.6)",
@@ -209,7 +209,7 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
             </p>
 
             <p
-              className="text-white text-lg leading-normal mt-6"
+              className="text-white text-2xl leading-normal mt-6"
               style={{
                 textShadow: "0 4px 14px rgba(0,0,0,0.6)",
               }}
