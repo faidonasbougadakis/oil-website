@@ -98,18 +98,32 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
         message,
       }
 
-      const res = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      })
+      // Allow configuring a separate API base URL via Vite env: VITE_API_BASE
+      // If not provided and we're running in production (GitHub Pages),
+      // fallback to opening the user's email client instead of attempting a POST to GitHub Pages.
+      const API_BASE = (import.meta.env.VITE_API_BASE as string) || ''
+      const apiUrl = API_BASE ? `${API_BASE.replace(/\/$/, '')}/api/send-email` : '/api/send-email'
 
-      if (!res.ok) {
-        const errText = await res.text().catch(() => 'Failed to send')
-        throw new Error(errText)
+      if (import.meta.env.PROD && !API_BASE) {
+        // On GitHub Pages there's no server to accept POST requests; open mail client instead.
+        const mailto = `mailto:${payload.to}?subject=${encodeURIComponent(payload.subject)}&body=${encodeURIComponent(`From: ${payload.fromName} <${payload.fromEmail}>\n\n${payload.message}`)}`
+        window.location.href = mailto
+        setStatus('success')
+      } else {
+        const res = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        })
+
+        if (!res.ok) {
+          const errText = await res.text().catch(() => 'Failed to send')
+          throw new Error(errText)
+        }
+
+        setStatus('success')
       }
 
-      setStatus('success')
       setFirstName('')
       setLastName('')
       setEmail('')
