@@ -123,7 +123,7 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
       <style>{`
         /* Responsive background for OurFacilities */
         .our-facilities-bg {
-          background-image: url('/oil-website/background-2.jpg');
+          background-image: url('/background-2.jpg');
           background-repeat: no-repeat;
           background-position: left center;
           background-size: 80% auto;
@@ -239,7 +239,7 @@ const OurFacilities: React.FC<Props> = ({ language }) => {
 
       {/* symbols.png placed bottom-right on top of green layout (above overlay, below text) */}
       <img
-        src="/oil-website/symbols.png"
+        src="/symbols.png"
         alt="symbols"
         className="absolute object-contain"
         style={{

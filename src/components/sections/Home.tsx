@@ -57,7 +57,7 @@ const Home: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
           className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ease-out transform ${
             mounted ? "opacity-100 scale-100" : "opacity-0 scale-105"
           }`}
-          style={{ backgroundImage: "url('/oil-website/image3.jpg')" }}
+          style={{ backgroundImage: "url('/image3.jpg')" }}
           aria-hidden
         />
 

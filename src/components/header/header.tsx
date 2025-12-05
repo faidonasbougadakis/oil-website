@@ -156,7 +156,7 @@ const Header: React.FC<{ language: "gr" | "en"; setLanguage: (lang: "gr" | "en")
       <div className="relative flex items-center justify-center h-20">
         {/* Left corner logo (absolute) */}
         <div className="absolute left-4 top-0 h-full flex items-center pointer-events-auto ">
-          <img src="/oil-website/image5.1.png" alt="MyLogo" className={`${isNarrow ? 'h-15' : 'h-20'} brightness-70`} />
+          <img src="/image5.1.png" alt="MyLogo" className={`${isNarrow ? 'h-15' : 'h-20'} brightness-70`} />
         </div>
 
         {/* Centered nav with responsive padding and constrained max width */}

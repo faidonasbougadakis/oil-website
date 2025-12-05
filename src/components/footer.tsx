@@ -33,7 +33,7 @@ const Footer: FC = () => {
     if (vw > MOBILE_MAX) return; // allow normal navigation on larger screens
 
     e.preventDefault();
-    const url = '/oil-website/pallets.png';
+    const url = '/pallets.png';
     const filename = 'pallets.png';
 
     try {
@@ -59,7 +59,7 @@ const Footer: FC = () => {
     <footer className="bg-[#39413C] text-white py-12 px-6 text-center relative">
       <div
         className="hidden md:block absolute inset-0 bg-contain bg-center bg-no-repeat opacity-50"
-        style={{ backgroundImage: "url('/oil-website/image2.png')", backgroundSize: "45%" }}
+        style={{ backgroundImage: "url('/image2.png')", backgroundSize: "45%" }}
       />
       <div className="relative z-10 flex flex-col items-center mb-10">
         <div className="flex gap-5">

@@ -135,7 +135,7 @@ const AboutUs: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
           
                 {/* overlay image5.1 centered on top of image5 (appears from nothing). visible only on xl+ */}
                 <img
-                  src="/oil-website/image5.1.png"
+                  src="/image5.1.png"
                   alt=""
                   aria-hidden="true"
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-30 object-contain pre-animate delay-5"
