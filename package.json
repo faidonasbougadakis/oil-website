@@ -9,6 +9,7 @@
     "start:server": "node server/index.js",
     "dev:all": "concurrently \"vite\" \"npm:start:server\"",
     "build": "tsc -b && vite build",
+    "postbuild": "cp dist/index.html dist/404.html || true",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
