@@ -13,18 +13,5 @@
   </head>
   <body>
     <div id="root"></div>
-    <!-- runtime check: if main bundle is missing, reload with cache-bypass param -->
-    <script>
-      (function(){
-        try{
-          const scriptPath = '/assets/' + (function(){
-            // this value will be updated at build time in the generated dist/index.html
-            return '';
-          })();
-          // quick HEAD to verify an asset exists; no-store to bypass caches
-          fetch('/assets', { method: 'GET', cache: 'no-store' }).catch(()=>{});
-        }catch(e){}
-      })();
-    </script>
   </body>
 </html>
