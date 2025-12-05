@@ -34,7 +34,7 @@ function App() {
   );
 
   return (
-    <BrowserRouter basename="/oil-website">
+    <BrowserRouter basename={import.meta.env.BASE_URL || '/'}>
       <div className="relative min-h-screen bg-gray-200">
         {/* === Foreground Content === */}
         <div className="relative z-10">
