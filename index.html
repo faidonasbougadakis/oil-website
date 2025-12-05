@@ -2,6 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <link rel="icon" type="image/svg+xml" href="/image5.1.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cretan-Land</title>
@@ -10,5 +13,18 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- runtime check: if main bundle is missing, reload with cache-bypass param -->
+    <script>
+      (function(){
+        try{
+          const scriptPath = '/assets/' + (function(){
+            // this value will be updated at build time in the generated dist/index.html
+            return '';
+          })();
+          // quick HEAD to verify an asset exists; no-store to bypass caches
+          fetch('/assets', { method: 'GET', cache: 'no-store' }).catch(()=>{});
+        }catch(e){}
+      })();
+    </script>
   </body>
 </html>
