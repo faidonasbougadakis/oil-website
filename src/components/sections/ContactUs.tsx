@@ -151,10 +151,11 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
 
   // contact details (adjust as needed)
   const contact = {
-    email: 'cretanlands@gmail.com',
+    sales_email: 'sales@cretan-land.gr',
+    info_email:'info@cretan-land.gr',
     phone: '+30 6986720400',
     address: 'Crete, Greece',
-    hours: 'Mon–Fri, 09:00–17:00',
+    hours: 'Mon–Fri, 08:00–16:00',
   }
 
   return (
@@ -288,9 +289,14 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
 
                 <div className="flex-1 min-w-0 text-center max-[500px]:text-center sm:text-left flex items-center justify-center sm:justify-start">
                   <p className="text-sm text-black break-words">
-                    {t.sending}{' '}
-                    <a href={`mailto:${contact.email}`} className="font-semibold text-black break-words">
-                      {contact.email}
+                    {t.sending}
+                    <br />
+                    <a href={`mailto:${contact.sales_email}`} className="font-semibold text-black break-words">
+                      {contact.sales_email}
+                    </a>
+                    <br />
+                    <a href={`mailto:${contact.info_email}`} className="font-semibold text-black break-words">
+                      {contact.info_email}
                     </a>
                   </p>
                 </div>
@@ -312,18 +318,31 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                   </svg>
                   <div className="flex-1 min-w-0">
                     <dt className="font-medium">{t.emailLabel}</dt>
-                    <dd className="relative">
+                    <dd className="relative space-y-1">
                       <a
-                        href={`mailto:${contact.email}`}
+                        href={`mailto:${contact.sales_email}`}
                         onClick={(e) => {
                           e.preventDefault()
-                          handleCopy(contact.email, 'email', e as any)
+                          handleCopy(contact.sales_email, 'email', e as any)
                         }}
                         className="text-sm break-words text-gray-800 cursor-pointer hover:text-[#9B9C5D] transition-colors"
-                        title={`Click to copy: ${contact.email}`}
+                        title={`Click to copy: ${contact.sales_email}`}
                       >
-                        {contact.email}
+                        {contact.sales_email}
                       </a>
+
+                      <a
+                        href={`mailto:${contact.info_email}`}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          handleCopy(contact.info_email, 'email', e as any)
+                        }}
+                        className="text-sm break-words text-gray-800 cursor-pointer hover:text-[#9B9C5D] transition-colors"
+                        title={`Click to copy: ${contact.info_email}`}
+                      >
+                        {contact.info_email}
+                      </a>
+
                       {copiedPopup.key === 'email' && (
                         <div
                           className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full mb-2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap animate-fade-in pointer-events-none"
