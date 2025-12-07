@@ -11,13 +11,11 @@ const productText = {
 };
 
 const regionText = {
-  gr: `Η ποιότητα του ελαιολάδου καθορίζεται άμεσα από το μικροκλίμα και τη μορφολογία του εδάφους. Η διαφοροποίηση μεταξύ ορεινών και πεδινών περιοχών δημιουργεί προϊόντα με διακριτό γευστικό χαρακτήρα.
+  gr:' Η ποιότητα του ελαιολάδου καθορίζεται άμεσα από το μικροκλίμα και τη μορφολογία του εδάφους.Η διαφοροποίηση μεταξύ ορεινών και πεδινών περιοχών δημιουργεί προϊόντα με διακριτό γευστικό χαρακτήρα.',
 
-Ορεινές Περιοχές: Βιάννος, Κρουσώνας, Τύλισος. Το υψηλό υψόμετρο και η ιδιαίτερη εδαφογένεια προσδίδουν στο ελαιόλαδο συγκεκριμένα πλεονεκτήματα· οι συνθήκες καλλιέργειας σε αυτές τις ζώνες οδηγούν σε παραγωγή ελαιολάδου με εντονότερο πράσινο χρώμα, πλούσια φρουτώδη γεύση και υψηλή πολυπλοκότητα, καθώς και αυξημένη περιεκτικότητα σε ευεργετικές ουσίες λόγω της αργής ωρίμανσης του καρπού. Πεδινές & Ημιορεινές Περιοχές: Αρκαλοχώρι, Βόνη, Επισκοπή, Τύλισος. Στις περιοχές αυτές, η μορφολογία του εδάφους και η μεγαλύτερη ηλιοφάνεια διαμορφώνουν ένα διαφορετικό προφίλ· το ελαιόλαδο που παράγεται χαρακτηρίζεται από γευστική ισορροπία και ιδιαίτερα οργανοληπτικά χαρακτηριστικά που διαφοροποιούνται σαφώς από εκείνα των ορεινών όγκων.`,
 
-  en: `The quality of olive oil is directly determined by the microclimate and the morphology of the soil. The distinction between mountainous and lowland areas creates products with distinct flavor profiles.
+  en: 'The quality of olive oil is directly determined by the microclimate and the morphology of the soil. The distinction between mountainous and lowland areas creates products with distinct flavor profiles.'
 
-Mountainous Areas: Viannos, Krousonas, Tylisos. High altitude and unique soil composition give the olive oil specific advantages; cultivation conditions in these zones lead to the production of olive oil with a more intense green color, a rich fruity flavor and high complexity, and increased levels of beneficial compounds due to the slow ripening of the fruit. Lowland & Semi-mountainous Areas: Arkalochori, Voni, Episkopi, tilisos. In these areas, soil morphology and greater sunshine shape a different profile; the olive oil produced is characterized by balanced flavor and distinct organoleptic qualities that clearly differ from those of the mountainous regions.`
 };
 
 const filenames = [
