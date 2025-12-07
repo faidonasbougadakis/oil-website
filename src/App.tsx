@@ -18,7 +18,7 @@ function App() {
     <>
       <Header language={language} setLanguage={setLanguage} />
 
-      <main className="flex flex-col items-center justify-center text-center text-black w-full pb-8">
+      <main className="flex flex-col items-center justify-center text-center text-black w-full ">
         <Home language={language} />
         <AboutUs language={language} />
       <OurProducts language={language} />
