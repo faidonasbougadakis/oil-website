@@ -3,11 +3,11 @@ import React, { useEffect, useRef, useState } from "react";
 const translations = {
   gr: {
     welcome: "Κρήτικος Αγρός",
-    scrollText: "Γεύση. Υγεία. Κρήτη. Ανακαλύψτε τη διαφορά που κάνει η καταγωγή.",
+    scrollText: "Γεύση. Υγεία. Κρήτη. ",
   },
   en: {
     welcome: "Cretan lands",
-    scrollText: "Taste. Health. Crete. Discover the difference that origin makes.",
+    scrollText: "Taste. Health. Crete.",
   },
 };
 
