@@ -317,8 +317,8 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                     <path d="M22 6.5L12 13 2 6.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   <div className="flex-1 min-w-0">
-                    <dt className="font-medium">{t.emailLabel}</dt>
-                    <dd className="relative space-y-1">
+                    <div className="flex items-center gap-3">
+                      <dt className="font-medium">{t.emailLabel}</dt>
                       <a
                         href={`mailto:${contact.sales_email}`}
                         onClick={(e) => {
@@ -330,7 +330,9 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                       >
                         {contact.sales_email}
                       </a>
+                    </div>
 
+                    <dd className="relative mt-1">
                       <a
                         href={`mailto:${contact.info_email}`}
                         onClick={(e) => {
