@@ -317,20 +317,21 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                     <path d="M22 6.5L12 13 2 6.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3">
-                      <dt className="font-medium">{t.emailLabel}</dt>
+                    <dt className="font-medium block">{t.emailLabel}</dt>
+
+                    <dd className="relative mt-1">
                       <a
                         href={`mailto:${contact.sales_email}`}
                         onClick={(e) => {
                           e.preventDefault()
                           handleCopy(contact.sales_email, 'email', e as any)
                         }}
-                        className="text-sm break-words text-gray-800 cursor-pointer hover:text-[#9B9C5D] transition-colors"
+                        className="text-sm break-words text-gray-800 cursor-pointer hover:text-[#9B9C5D] transition-colors block"
                         title={`Click to copy: ${contact.sales_email}`}
                       >
                         {contact.sales_email}
                       </a>
-                    </div>
+                    </dd>
 
                     <dd className="relative mt-1">
                       <a
@@ -339,7 +340,7 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                           e.preventDefault()
                           handleCopy(contact.info_email, 'email', e as any)
                         }}
-                        className="text-sm break-words text-gray-800 cursor-pointer hover:text-[#9B9C5D] transition-colors"
+                        className="text-sm break-words text-gray-800 cursor-pointer hover:text-[#9B9C5D] transition-colors block"
                         title={`Click to copy: ${contact.info_email}`}
                       >
                         {contact.info_email}
