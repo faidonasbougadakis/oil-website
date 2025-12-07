@@ -4,11 +4,11 @@ const copy = {
   gr: {
     title: "Σχετικά με εμάς",
     mainBody:
-      "Η Αγροτική Εταιρική Συλλογική Εταιρεία «Κρητικό Πεδίο» ιδρύθηκε τον Φεβρουάριο του 2018 με τη συνένωση των δυνάμεων 6 ισχυρών συνεταιρισμών της Κρήτης: Αρκαλοχωρίου, Βιάννου, Βόνης, Επισκοπής, Κρουσώνα και Τυλίσου.",
+      "Η Αγροτική Εταιρική Συλλογική Εταιρεία «Κρητικός Αγρός» ιδρύθηκε τον Φεβρουάριο του 2018 με τη συνένωση των δυνάμεων 6 ισχυρών συνεταιρισμών της Κρήτης: Αρκαλοχωρίου, Βιάννου, Βόνης, Επισκοπής, Κρουσώνα και Τυλίσου.",
     facilities:
       "Οι συνεταιρισμοί, οι οποίοι διατηρούν την ανεξάρτητη οντότητά τους, διαθέτουν σύγχρονα ελαιοτριβεία, εσωτερικές δεξαμενές αποθήκευσης λαδιού από ανοξείδωτο χάλυβα συνολικής χωρητικότητας 4.000 τόνων, συσκευαστήρια, χώρους αποθήκευσης γεωργικών εφοδίων, χωράφια, οικόπεδα, μέσα μεταφοράς και διοικητικά γραφεία.",
     board:
-      "Την προεδρία ανέλαβε ο κ. Κωνσταντίνος Πιτσικάκης μετά τη διαδικασία εκλογής που πραγματοποιήθηκε το 2022. αντιπρόεδρος είναι ο κ. Ιωάννης Μπορβουδάκης και μέλη είναι ο κ. Εμμανουήλ Κλαδάκης, ο κ. Ιωάννης Κυπριωτάκης, ο κ. Ιωάννης Λαμπράκης, ο κ. Θεόδωρος Σταυρίδης και ο κ. Μιχαήλ Φιολιτάκης.",
+      "Την προεδρία ανέλαβε ο κ. Κωνσταντίνος Πιτσικάκης μετά τη διαδικασία εκλογής που πραγματοποιήθηκε το 2022. αντιπρόεδρος είναι ο κ. Ιωάννης Μπορβουδάκης και μέλη είναι ο κ. Εμμανουήλ Κλαδάκης, ο κ. Ιωάννης Κυπριωτάκης και ο κ. Ιωάννης Λαμπράκης.",
   },
   en: {
     title: "About Us",
@@ -17,7 +17,7 @@ const copy = {
     facilities:
       "The cooperatives, which maintain their independent entity, have modern olive mills, internal stainless steel oil storage tanks with a total capacity of 4,000 tons, packing houses, storage areas for agricultural supplies, fields, plots of land, means of transport and administrative offices.",
     board:
-      "The presidency has been taken over by Mr. Konstantinos Pitsikakis after the election process that took place in 2022. the vice president is Mr. Ioannis Borboudakis and the members are Mr. Emmanouil Kladakis, Mr. Ioannis Kypriotakis, Mr. Ioannis Lambrakis, Mr. Theodoros Stavridis and Mr. Michail Fiolitakis.",
+      "The presidency has been taken over by Mr. Konstantinos Pitsikakis after the election process that took place in 2022. the vice president is Mr. Ioannis Borboudakis and the members are Mr. Emmanouil Kladakis, Mr. Ioannis Kypriotakis and Mr. Ioannis Lambrakis.",
   },
 };
 
