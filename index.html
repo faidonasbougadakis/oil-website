@@ -23,6 +23,12 @@
       (function(){
         try {
           var p = location.pathname || '';
+          // If user landed on a direct legacy path like /proionta, send them to root.
+          if (p.indexOf('/proionta') === 0) {
+            location.replace('/');
+            return;
+          }
+
           if (p.indexOf('/index.php') === 0) {
             // Remove the /index.php prefix
             var newp = p.replace(/^\/index\.php/, '');
