@@ -154,7 +154,8 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
     sales_email: 'sales@cretan-land.gr',
     info_email:'info@cretan-land.gr',
     phone: '+30 6986720400',
-    address: 'Crete, Greece',
+    phone2: '+30 281 0228351',
+    address: 'Μανουσογιάννη 3 71202 Ηράκλειο Κρήτης Ελλάδα',
     hours: 'Mon–Fri, 08:00–16:00',
   }
 
@@ -374,6 +375,20 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                       >
                         {contact.phone}
                       </a>
+                      {contact.phone2 && (
+                        <div className="mt-1">
+                          <a
+                            href={`tel:${contact.phone2}`}
+                            onClick={(e) => {
+                              e.preventDefault()
+                              handleCopy(contact.phone2, 'phone', e as any)
+                            }}
+                            className="text-sm text-gray-800 cursor-pointer hover:text-[#9B9C5D] transition-colors"
+                          >
+                            {contact.phone2}
+                          </a>
+                        </div>
+                      )}
                       {copiedPopup.key === 'phone' && (
                         <div
                           className="absolute top-0 left-0 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap animate-fade-in pointer-events-none"
