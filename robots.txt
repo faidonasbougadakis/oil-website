@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Sitemap locations (both apex and www variants)
+Sitemap: https://cretan-land.gr/sitemap.xml
+Sitemap: https://www.cretan-land.gr/sitemap.xml
