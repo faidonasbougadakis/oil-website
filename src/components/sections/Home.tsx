@@ -4,10 +4,12 @@ const translations = {
   gr: {
     welcome: "Κρήτικος Αγρός",
     scrollText: "Γεύση. Υγεία. Κρήτη. ",
+    description: "Cretan-Land — εξαιρετικό παρθένο ελαιόλαδο και αγροτικά προϊόντα από την Κρήτη. Παραγωγός με έδρα το Ηράκλειο.",
   },
   en: {
     welcome: "Cretan lands",
     scrollText: "Taste. Health. Crete.",
+    description: "Cretan-Land — premium extra virgin olive oil and agricultural products from Crete. Family-run producer based in Heraklion.",
   },
 };
 
@@ -67,6 +69,7 @@ const Home: React.FC<{ language: "gr" | "en" }> = ({ language }) => {
         <div className="relative z-10 flex flex-col items-center justify-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold leading-tight text-center text-white mb-4">{translations[language].welcome}</h1>
           <p className="text-2xl max-w-xl">{translations[language].scrollText}</p>
+          <p className="mt-4 text-base max-w-2xl text-center text-white/90">{translations[language].description}</p>
         </div>
       </section>
 
