@@ -11,6 +11,28 @@
     <link rel="apple-touch-icon" href="/image5.1.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cretan-Land</title>
+    <!--
+      Fix: some external links (e.g. Google index) include PHP-style paths like
+      `/index.php/proionta/`. GitHub Pages can't rewrite those server-side, so
+      add a small client script that strips the `/index.php` prefix and
+      redirects the browser to the cleaned SPA path.
+    -->
+    <script>
+      (function(){
+        try {
+          var p = location.pathname || '';
+          if (p.indexOf('/index.php') === 0) {
+            var newp = p.replace(/^\/index\.php/, '');
+            if (!newp) newp = '/';
+            var dest = newp + location.search + location.hash;
+            // Replace the location so the back button doesn't keep the broken URL
+            location.replace(dest);
+          }
+        } catch (e) {
+          // ignore
+        }
+      })();
+    </script>
     <script type="module" crossorigin src="/assets/index-BWDcCTDp.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DqJj-sZp.css">
   </head>
