@@ -105,6 +105,7 @@ const Footer: FC = () => {
           <p className="text-gray-300 mb-1">Agricultural Corporate Partneship "Cretan Field</p>
           <p className="text-gray-300 mb-1"></p>
           <p className="text-gray-300">📞 +306986720400</p>
+          <p className="text-gray-300">📞 +302810228351</p>
         </div>
       </div>
 

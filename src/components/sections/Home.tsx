@@ -6,7 +6,7 @@ const translations = {
     scrollText: "Γεύση. Υγεία. Κρήτη. ",
   },
   en: {
-    welcome: "Cretan lands",
+    welcome: "Cretan land",
     scrollText: "Taste. Health. Crete.",
   },
 };

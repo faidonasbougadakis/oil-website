@@ -154,7 +154,7 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
     sales_email: 'sales@cretan-land.gr',
     info_email:'info@cretan-land.gr',
     phone: '+30 6986720400',
-    phone2: '+30 281 0228351',
+    phone2: '+30 2810228351',
     address: 'Μανουσογιάννη 3 71202 Ηράκλειο Κρήτης Ελλάδα',
     hours: 'Mon–Fri, 08:00–16:00',
   }
