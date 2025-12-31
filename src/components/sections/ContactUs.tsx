@@ -25,6 +25,7 @@ const translations = {
     errorRequired: "Παρακαλώ συμπληρώστε όλα τα πεδία.",
     errorEmail: "Παρακαλώ δώστε μια έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου.",
     success: "Μήνυμα απεστάλη. Ευχαριστούμε!",
+    successMailto: "Άνοιξε η εφαρμογή email. Πατήστε Αποστολή για να ολοκληρωθεί.",
     error: "Κάτι πήγε στραφώνια. Παρακαλώ δοκιμάστε ξανά αργότερα.",
   },
   en: {
@@ -51,6 +52,7 @@ const translations = {
     errorRequired: "Please fill out all fields.",
     errorEmail: "Please provide a valid email address.",
     success: "Message sent. Thank you!",
+    successMailto: "Your email app has opened. Press Send to complete.",
     error: "Something went wrong. Please try again later.",
   },
 };
@@ -64,6 +66,7 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
   const [message, setMessage] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [successMsg, setSuccessMsg] = useState<string | null>(null)
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
 
   // small UI states for contact details interactions
@@ -75,6 +78,7 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
   async function handleSubmit(ev: React.FormEvent) {
     ev.preventDefault()
     setErrorMsg(null)
+    setSuccessMsg(null)
 
     if (!firstName.trim() || !lastName.trim() || !email.trim() || !message.trim()) {
       setErrorMsg(t.errorRequired)
@@ -91,7 +95,7 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
     try {
       const subject = `${theme} — ${firstName} ${lastName}`
       const payload = {
-        to: 'cretanlands@gmail.com',
+        to: contact.info_email,
         subject,
         fromName: `${firstName} ${lastName}`,
         fromEmail: email,
@@ -109,6 +113,7 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
         const mailto = `mailto:${payload.to}?subject=${encodeURIComponent(payload.subject)}&body=${encodeURIComponent(`From: ${payload.fromName} <${payload.fromEmail}>\n\n${payload.message}`)}`
         window.location.href = mailto
         setStatus('success')
+        setSuccessMsg(t.successMailto)
       } else {
         const res = await fetch(apiUrl, {
           method: 'POST',
@@ -122,6 +127,7 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
         }
 
         setStatus('success')
+        setSuccessMsg(t.success)
       }
 
       setFirstName('')
@@ -274,7 +280,7 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
 
               {status === 'success' && (
                 <p className="text-sm text-green-600" role="status">
-                  {t.success}
+                  {successMsg || t.success}
                 </p>
               )}
 
@@ -323,9 +329,9 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                     <dd className="relative mt-1">
                       <a
                         href={`mailto:${contact.sales_email}`}
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                           e.preventDefault()
-                          handleCopy(contact.sales_email, 'email', e as any)
+                          handleCopy(contact.sales_email, 'email', e)
                         }}
                         className="text-sm break-words text-gray-800 cursor-pointer hover:text-[#9B9C5D] transition-colors block"
                         title={`Click to copy: ${contact.sales_email}`}
@@ -337,9 +343,9 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                     <dd className="relative mt-1">
                       <a
                         href={`mailto:${contact.info_email}`}
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                           e.preventDefault()
-                          handleCopy(contact.info_email, 'email', e as any)
+                          handleCopy(contact.info_email, 'email', e)
                         }}
                         className="text-sm break-words text-gray-800 cursor-pointer hover:text-[#9B9C5D] transition-colors block"
                         title={`Click to copy: ${contact.info_email}`}
@@ -367,9 +373,9 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                     <dd className="relative">
                       <a
                         href={`tel:${contact.phone}`}
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                           e.preventDefault()
-                          handleCopy(contact.phone, 'phone', e as any)
+                          handleCopy(contact.phone, 'phone', e)
                         }}
                         className="text-sm text-gray-800 cursor-pointer hover:text-[#9B9C5D] transition-colors"
                       >
@@ -379,9 +385,9 @@ export default function ContactUs({ language = "en" }: { language: "gr" | "en" }
                         <div className="mt-1">
                           <a
                             href={`tel:${contact.phone2}`}
-                            onClick={(e) => {
+                            onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                               e.preventDefault()
-                              handleCopy(contact.phone2, 'phone', e as any)
+                              handleCopy(contact.phone2, 'phone', e)
                             }}
                             className="text-sm text-gray-800 cursor-pointer hover:text-[#9B9C5D] transition-colors"
                           >

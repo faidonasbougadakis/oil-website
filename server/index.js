@@ -16,7 +16,7 @@ const smtpPort = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT, 10) : 5
 const smtpSecure = process.env.SMTP_SECURE === 'true' || smtpPort === 465
 const smtpUser = process.env.SMTP_USER
 const smtpPass = process.env.SMTP_PASS
-const DEFAULT_RECIPIENT = process.env.DEFAULT_RECIPIENT || 'cretanlands@gmail.com'
+const DEFAULT_RECIPIENT = process.env.DEFAULT_RECIPIENT || smtpUser || 'cretanlands@gmail.com'
 
 // Do not print credentials or warnings here; keep server output minimal.
 
@@ -27,8 +27,10 @@ const transporter = nodemailer.createTransport({
   auth: smtpUser && smtpPass ? { user: smtpUser, pass: smtpPass } : undefined,
 })
 
-// Attempt verify silently (no logging) to warm up the transporter.
-transporter.verify().catch(() => {})
+// Verify at startup so failures are visible in logs (no secrets printed).
+transporter.verify().catch((err) => {
+  console.error('SMTP verify failed:', err && err.message ? err.message : err)
+})
 
 app.post('/api/send-email', async (req, res) => {
   try {
@@ -44,6 +46,7 @@ app.post('/api/send-email', async (req, res) => {
     }
 
     // Force the recipient to the default project recipient to avoid accidental misrouting.
+    // (Client-supplied `to` is ignored by default.)
     const toAddress = DEFAULT_RECIPIENT
 
     // Use authenticated SMTP user as the envelope From to satisfy providers
@@ -67,7 +70,27 @@ app.post('/api/send-email', async (req, res) => {
       }
 
       const info = await transporter.sendMail(mailOptions)
-      return res.status(200).json({ ok: true, messageId: info && info.messageId })
+      const accepted = Array.isArray(info && info.accepted) ? info.accepted : []
+      const rejected = Array.isArray(info && info.rejected) ? info.rejected : []
+
+      // If nothing was accepted, treat as delivery handoff failure.
+      if (!accepted.length) {
+        return res.status(502).json({
+          ok: false,
+          error: 'Message was not accepted by SMTP server',
+          messageId: info && info.messageId,
+          rejected,
+        })
+      }
+
+      return res.status(200).json({
+        ok: true,
+        messageId: info && info.messageId,
+        accepted,
+        rejected,
+        envelope: info && info.envelope,
+        response: info && info.response,
+      })
   } catch (err) {
     console.error('Send email error', err)
     return res.status(500).send('Failed to send email')
@@ -78,6 +101,9 @@ app.post('/api/send-email', async (req, res) => {
 
 const server = app.listen(PORT, () => {
   console.log(`Email server listening on http://localhost:${PORT}`)
+  console.log(
+    `SMTP: host=${smtpHost} port=${smtpPort} secure=${smtpSecure} recipient=${DEFAULT_RECIPIENT}`
+  )
 })
 
 server.on('error', (err) => {
